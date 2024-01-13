@@ -29,4 +29,27 @@ void ssuds::ArrayList::append(std::string s)
 	//     we will add one to mSize
 }
 
+ssuds::ArrayList::~ArrayList() 
+{
+	// Free up the memory used by the array.
+	// We need to free up the array itself, and the string objects in it.
+	// We need to set mSize to 0.
+	// We need to set mData to NULL.
+	if (array != nullptr) // free the array
+	{	
+		delete[] array;
+		array = nullptr;
+	}
+
+	for (int i = 0; i < length; i++) 
+	{
+		if (array[i]!= nullptr) // free the strings in the array
+		{	
+		delete array[i];
+		array[i] = nullptr;
+		}
+	}
+	length = 0;
+}
+
 // Define the other method bodies here...

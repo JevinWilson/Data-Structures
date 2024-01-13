@@ -7,7 +7,7 @@ namespace ssuds
 		unsigned int mSize;
 	public:
 		ArrayList();
-		~ArrayList();
+		~ArrayList();     // Destructor
 		void append(std::string s);
 		unsigned int size();
 		// ... and the rest of the methods
