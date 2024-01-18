@@ -52,4 +52,115 @@ ssuds::ArrayList::~ArrayList()
 	length = 0;
 }
 
+void ssuds::ArrayList::append(std::string value) {
+	// create a temp array one element bigger
+	std::string *newArray = new std::string[mSize + 1];
+	// copy the elements from the old array to the new
+	for (int i = 0; i < mSize; i++) {
+		newArray[i] = mData[i];
+	}
+	// add new element
+	newArray[mSize] = value;
+	// free up the old array
+	delete[] mData;
+	// set instance variables
+	mData = newArray;
+	mSize++;
+}
+
+unsigned int ssuds::ArrayList::size() {
+	return mSize;
+}
+
+void ssuds::ArrayList::insert(std::string value, unsigned int index) {
+	// check if index is in range
+	if (index > mSize) {
+		throw std::out_of_range("Index out of range");
+	}
+	// allocate new array
+	std::string* newArray = new std::string[mSize + 1];
+	// copy elements up to index
+	for (int i = 0; i < index; i++) {
+		newArray[i] = mData[i];
+	}
+	// add new element
+	newArray[index] = value;
+	// copy remaining elements
+	for (int i = index; i < mSize; i++) {
+		newArray[i + 1] = mData[i];
+	}
+	// free up old array
+	delete[] mData;
+	// update instance variables
+	mData = newArray;
+	mSize++;
+}
+
+void ssuds::ArrayList::clear() {
+	// delete existing array
+	if (mData!= nullptr) {
+		delete[] mData;
+		mData = nullptr;
+	}
+	// reset size
+	mSize = 0;
+}
+
+std::string ssuds::ArrayList::get(unsigned int index) {
+	// check if its between bound
+	if (index >= mSize) {
+		throw std::out_of_range("Index out of range");
+	}
+	return mData[index];
+}
+
+int ssuds::ArrayList::find(std::string value, int startIndex) {
+	// start at startIndex
+	if (startIndex < 0) {
+		startIndex = 0;
+	}
+	// linear search
+	for (int i = startIndex; i < mSize; i++) {
+		if (mData[i] == value) {
+			return i;
+		}
+	}
+	// not found
+	return -1;
+}
+
+void ssuds::ArrayList::remove(unsigned int index) {
+	// check if index is in range
+	if (index >= mSize) {
+		throw std::out_of_range("Index out of range");
+	}
+	// create new array
+	std:: string* newArray = new std::string[mSize - 1];
+	// copy elements before index
+	for (int i = 0; i < index; i++) {
+		newArray[i - 1] = mData[i];
+	}
+	// copy elements after index
+	for (int i = index + 1; i < mSize; i++) {
+		newArray[i - 1] = mData[i];
+	}
+	// delete old array
+	delete[] mData;
+	// update instance variables
+	mData = newArray;
+	mSize--;
+}
+
+int ssuds::ArrayList::remove_all(std::string value) {
+	int count = 0;
+	// search for value and remove each occurrence
+	int index = find(value, index);
+	while (index != -1) {
+		remove(index);
+		index = find(value, index);
+		count++;
+	}
+	return count;
+}
+
 // Define the other method bodies here...
