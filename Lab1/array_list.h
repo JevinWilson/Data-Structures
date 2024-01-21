@@ -1,3 +1,7 @@
+#ifndef ARRAY_LIST_CLASS_H
+#define ARRAY_LIST_CLASS_H
+
+#include <iostream>
 #include <string>
 
 namespace ssuds
@@ -22,3 +26,4 @@ namespace ssuds
 		int remove_all(std::string value);
 	};
 }
+#endif

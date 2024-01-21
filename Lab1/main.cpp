@@ -1,4 +1,5 @@
-#include "array_list_class.cpp"
+#include "array_list.h"
+//#include "array_list_class.cpp"
 
 int main()
 {

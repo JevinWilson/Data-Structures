@@ -1,4 +1,3 @@
-#include <iostream>
 #include "array_list.h"
 
 ssuds::ArrayList::ArrayList()
