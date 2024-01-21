@@ -1,3 +1,5 @@
+#include <string>
+
 namespace ssuds
 {
 	class ArrayList

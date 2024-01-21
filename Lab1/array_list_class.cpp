@@ -27,6 +27,20 @@ void ssuds::ArrayList::append(std::string s)
 	//     we need to free up the old array
 	//     we need to make the larger array THE array.
 	//     we will add one to mSize
+
+	// create a temp array one element bigger
+	std::string* newArray = new std::string[mSize + 1];
+	// copy the elements from the old array to the new
+	for (int i = 0; i < mSize; i++) {
+		newArray[i] = mData[i];
+	}
+	// add new element
+	newArray[mSize] = s;
+	// free up the old array
+	delete[] mData;
+	// update variables
+	mData = newArray;
+	mSize++;
 }
 
 ssuds::ArrayList::~ArrayList() 
@@ -35,37 +49,11 @@ ssuds::ArrayList::~ArrayList()
 	// We need to free up the array itself, and the string objects in it.
 	// We need to set mSize to 0.
 	// We need to set mData to NULL.
-	if (array != nullptr) // free the array
-	{	
-		delete[] array;
-		array = nullptr;
+	if (mData!= nullptr) {
+		delete[] mData;
+		mData = nullptr;
 	}
-
-	for (int i = 0; i < length; i++) 
-	{
-		if (array[i]!= nullptr) // free the strings in the array
-		{	
-		delete array[i];
-		array[i] = nullptr;
-		}
-	}
-	length = 0;
-}
-
-void ssuds::ArrayList::append(std::string value) {
-	// create a temp array one element bigger
-	std::string *newArray = new std::string[mSize + 1];
-	// copy the elements from the old array to the new
-	for (int i = 0; i < mSize; i++) {
-		newArray[i] = mData[i];
-	}
-	// add new element
-	newArray[mSize] = value;
-	// free up the old array
-	delete[] mData;
-	// set instance variables
-	mData = newArray;
-	mSize++;
+	mSize = 0;
 }
 
 unsigned int ssuds::ArrayList::size() {
