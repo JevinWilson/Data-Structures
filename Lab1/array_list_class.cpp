@@ -56,10 +56,6 @@ ssuds::ArrayList::~ArrayList()
 	mSize = 0;
 }
 
-unsigned int ssuds::ArrayList::size() {
-	return mSize;
-}
-
 void ssuds::ArrayList::insert(std::string value, unsigned int index) {
 	// check if index is in range
 	if (index > mSize) {
