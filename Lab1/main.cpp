@@ -13,19 +13,20 @@ int main()
 	tester.append("Jevin");
 	tester.insert("Insert", 1);
 	tester.remove(1);
-	std::cout << "sizer before clear = " << tester.size() << std::endl;	// 3
+	int find = tester.find("Jevin", 0);
+	std::cout << "size before clear = " << tester.size() << std::endl;	// 3
 	std::cout << tester.get(0) << std::endl;	// Bob
-	std::cout << tester.get(1) << std::endl;	// Insert
-	std::cout << tester.get(2) << std::endl;	// Carl
-	std::cout << tester.get(3) << std::endl;	// John
-	std::cout << tester.get(4) << std::endl;	// Parker
+	//std::cout << tester.get(1) << std::endl;	// Insert
+	std::cout << tester.get(1) << std::endl;	// Carl
+	std::cout << tester.get(2) << std::endl;	// John
+	std::cout << tester.get(3) << std::endl;	// Parker
+	std::cout << tester.get(4) << std::endl;	// Something
 	std::cout << tester.get(5) << std::endl;	// Something
-	std::cout << tester.get(6) << std::endl;	// Something
-	std::cout << tester.get(7) << std::endl;	// Jevin
+	std::cout << tester.get(6) << std::endl;	// Jevin
 
 	// get
 	try {
-		unsigned int index = 7;
+		unsigned int index = 6;
 		std::string element = tester.get(index);
 		std::cout << "element at index " << index << " = " << element << std::endl; // Jevin
 	}
@@ -33,10 +34,10 @@ int main()
 		std::cout << e.what() << std::endl;
 	}
 
+	std::cout << "Jevin was found at index " << find << std::endl;	// 6
+
 	tester.clear();
 	std::cout << "size after clear = " << tester.size() << "\n";	// 0
-	
-	
 	
 	return 0;
 }

@@ -98,17 +98,13 @@ std::string ssuds::ArrayList::get(unsigned int index) {
 }
 
 int ssuds::ArrayList::find(std::string value, int startIndex) {
-	// start at startIndex
-	if (startIndex < 0) {
-		startIndex = 0;
-	}
-	// linear search
+	// check if index is in range
 	for (int i = startIndex; i < mSize; i++) {
+		// if we find the value, return its index
 		if (mData[i] == value) {
 			return i;
 		}
 	}
-	// not found
 	return -1;
 }
 
