@@ -121,7 +121,7 @@ void ssuds::ArrayList::remove(unsigned int index) {
 	std:: string* newArray = new std::string[mSize - 1];
 	// copy elements before index
 	for (int i = 0; i < index; i++) {
-		newArray[i - 1] = mData[i];
+		newArray[i] = mData[i];
 	}
 	// copy elements after index
 	for (int i = index + 1; i < mSize; i++) {
