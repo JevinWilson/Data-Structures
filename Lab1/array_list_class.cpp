@@ -133,11 +133,13 @@ void ssuds::ArrayList::remove(unsigned int index) {
 int ssuds::ArrayList::remove_all(std::string value) {
 	int count = 0;
 	// search for value and remove each occurrence
-	int index = find(value, index);
+	int index = find(value, 0);
 	while (index != -1) {
+		// remove found element
 		remove(index);
-		index = find(value, index);
 		count++;
+		// find next occurrence of value
+		index = find(value, index);
 	}
 	return count;
 }
