@@ -16,8 +16,9 @@ ssuds::ArrayList::~ArrayList()
 
 void ssuds::ArrayList::append(std::string val)
 {
-	// (for now) always increase the size of the array by one
-	grow();
+	// check if we need to grow before appending
+	if (mSize == mCapacity)
+		grow();
 
 	// Stick our new element in the last slot and (sneakily) increase our size in the process
 	mData[mSize++] = val;
@@ -60,6 +61,10 @@ std::string ssuds::ArrayList::get(int index)
 
 void ssuds::ArrayList::grow()
 {
+	// if empty, make it 1 element
+	// if not empty, double the size
+	int new_capacity = (mCapacity == 0)? 1 : mCapacity * 2;
+
 	// Allocate what will become the new array
 	std::string* new_array = new std::string[mSize + 1];
 
@@ -72,6 +77,8 @@ void ssuds::ArrayList::grow()
 
 	// Make the new array *the* array
 	mData = new_array;
+	// update the capacity
+	mCapacity = new_capacity;
 }
 
 
@@ -80,8 +87,9 @@ void ssuds::ArrayList::insert(std::string val, int index)
 	if (index > mSize)
 		throw std::out_of_range("Invalid index: " + std::to_string(index));
 
-	// (for now) always increase our array size
-	grow();
+	// check if we need to grow before inserting
+	if (mSize == mCapacity)
+		grow();
 
 	// Move all the elements that come *after* index up one spot
 	for (int i = mSize; i > index; i--)

@@ -10,6 +10,9 @@ namespace ssuds
 		/// The current size of mData (in elements, not bytes)
 		int mSize;
 
+		/// @brief The current capacity of mData (in elements, not bytes)
+		int mCapacity;
+
 		/// The array of data we're currently holding
 		std::string* mData;
 
