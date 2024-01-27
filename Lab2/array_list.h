@@ -46,14 +46,14 @@ namespace ssuds
 		/// <param name="val">the value to search for</param>
 		/// <param name="start_index">the index to start searching at</param>
 		/// <returns></returns>
-		int find(T val, int start_index = 0);
+		int find(T val, int start_index = 0) const;
 
 		/// <summary>
 		/// Gets the data item at the given index.  This will throw an std::out_of_bounds exception if index is invalid (less than 0 or >= size)
 		/// </summary>
 		/// <param name="index">the index of the thing to return</param>
 		/// <returns>the value at the given index</returns>
-		T get(int index);
+		T get(int index) const;
 
 		/// <summary>
 		/// Inserts a new data item at a given index
@@ -80,7 +80,7 @@ namespace ssuds
 		/// Returns the size of the internal array (i.e.) how many things are being stored in the ArrayList
 		/// </summary>
 		/// <returns>the size of the ArrayList</returns>
-		int size();
+		int size() const;
 
 		/// capacity getter
 		int capacity() const {
@@ -110,7 +110,8 @@ namespace ssuds
 	}
 
 	template <class T>
-	int ArrayList<T>::find(T val, int start_index) {
+	// added const b/c it does not modify the data
+	int ArrayList<T>::find(T val, int start_index) const {
 		if (start_index >= mSize || start_index < 0)
 			throw std::out_of_range("Invalid index: " + std::to_string(start_index));
 
@@ -124,7 +125,8 @@ namespace ssuds
 	}
 
 	template <class T>
-	T ArrayList<T>::get(int index) {
+	// added const b/c it does not modify the data
+	T ArrayList<T>::get(int index) const {
 		if (index >= mSize || index < 0)
 			throw std::out_of_range("Invalid index: " + std::to_string(index));
 			
@@ -194,7 +196,8 @@ namespace ssuds
 	}
 
 	template <class T>
-	int ArrayList<T>::size() {
+	// added const b/c it does not modify the data
+	int ArrayList<T>::size() const {
 		return mSize;
 	}
 
