@@ -85,7 +85,7 @@ int main()
     */
 
     // The "application" problem
-    ssuds::ArrayList database;
+    ssuds::ArrayList<std::string> database;
     std::string database_fname("..\\..\\media\\data.txt");
     std::fstream fp(database_fname, std::ios::in);
     std::cout << "reading initial data" << std::endl;
