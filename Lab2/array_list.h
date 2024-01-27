@@ -81,6 +81,11 @@ namespace ssuds
 		/// </summary>
 		/// <returns>the size of the ArrayList</returns>
 		int size();
+
+		/// capacity getter
+		int capacity() const {
+			return mCapacity;
+		}
 	protected:
 		/// @brief Increases and double the capacity of the internal array
 		void grow();
