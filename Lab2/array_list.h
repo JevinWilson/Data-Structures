@@ -86,6 +86,14 @@ namespace ssuds
 		int capacity() const {
 			return mCapacity;
 		}
+		
+		/// get method with []
+		const T &operator[](int index) const {
+			if (index < 0 || index >= mSize) {
+				throw std::out_of_range("Index out of range");
+			}
+			return mData[index];
+		}
 	protected:
 		/// @brief Increases and double the capacity of the internal array
 		void grow();
@@ -110,7 +118,7 @@ namespace ssuds
 	}
 
 	template <class T>
-	// added const b/c it does not modify the data
+	// added const b/c the function does not modify the data
 	int ArrayList<T>::find(T val, int start_index) const {
 		if (start_index >= mSize || start_index < 0)
 			throw std::out_of_range("Invalid index: " + std::to_string(start_index));
@@ -125,7 +133,7 @@ namespace ssuds
 	}
 
 	template <class T>
-	// added const b/c it does not modify the data
+	// added const b/c the function does not modify the data
 	T ArrayList<T>::get(int index) const {
 		if (index >= mSize || index < 0)
 			throw std::out_of_range("Invalid index: " + std::to_string(index));
@@ -196,7 +204,7 @@ namespace ssuds
 	}
 
 	template <class T>
-	// added const b/c it does not modify the data
+	// added const b/c the function does not modify the data
 	int ArrayList<T>::size() const {
 		return mSize;
 	}
