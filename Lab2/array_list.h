@@ -1,6 +1,8 @@
 // #pragma once
 #include <string>
 #include <stdexcept>
+#include <fstream>
+#include <sstream>
 
 namespace ssuds
 {
@@ -93,6 +95,24 @@ namespace ssuds
 				throw std::out_of_range("Index out of range");
 			}
 			return mData[index];
+		}
+
+		/// friend function for stream operator
+		friend std::ostream& operater<<(std::ostream& os, const ArrayList<T>& list) {
+			// indicate the start of the list
+			os << "[";
+			// loop through ArrayList
+			for (int i = 0; i < list.mSize; ++i) {
+				// inside the loop each element is inserted to output stream
+				os << list.mData[i];
+				// if this is not the last element, insert a comma
+				if (i < list.mSize - 1) {
+					os << ", ";
+				}
+			}
+			// indicate the end of the list
+			os << "]";
+			return os;
 		}
 	protected:
 		/// @brief Increases and double the capacity of the internal array
