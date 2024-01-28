@@ -98,7 +98,7 @@ namespace ssuds
 		}
 
 		/// friend function for stream operator
-		friend std::ostream& operater<<(std::ostream& os, const ArrayList<T>& list) {
+		friend std::ostream& operator<<(std::ostream& os, const ArrayList<T>& list) {
 			// indicate the start of the list
 			os << "[";
 			// loop through ArrayList
