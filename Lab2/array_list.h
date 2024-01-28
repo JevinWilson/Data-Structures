@@ -114,6 +114,31 @@ namespace ssuds
 			os << "]";
 			return os;
 		}
+
+		/// overload the "=" operator
+		// copy constructor
+		ArrayList(const ArrayList<T>& other): mSize(other.mSize), mCapacity(other.mCapacity), mData(nullptr) {
+			if (other.mData) {
+				mData = new T[mCapacity];
+				for (int i = 0; i < mSize; i++) {
+					mData[i] = other.mData[i];
+				}
+			}
+		}
+		// assignment operator
+		ArrayList<T>& operator=(const ArrayList<T>& other) {
+			delete[] mData;
+			// copy size and capacity
+			mSize = other.mSize;
+			mCapacity = other.mCapacity;
+			// allocate new array and copy elements from other
+			mData = new T[mCapacity];
+			for (mData[i]; i < mSize; ++i) {
+				mData[i] = other.mData[i];
+			}
+			// return a reference to this object
+			return *this;
+		}
 	protected:
 		/// @brief Increases and double the capacity of the internal array
 		void grow();
