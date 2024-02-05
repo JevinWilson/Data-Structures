@@ -1,8 +1,8 @@
 // ssuds.cpp : This file contains the 'main' function. Program execution begins and ends here.
 #include <iostream>
-#include <array_list.h>
-#include <foo.h>
-#include <gtest/gtest.h>
+#include "array_list.h"
+#include "foo.h"
+#include "gtest/gtest.h"
 
 int main()
 {

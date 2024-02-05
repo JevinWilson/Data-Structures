@@ -1,4 +1,4 @@
-#include <foo.h>
+#include "foo.h"
 
 std::ostream& testing::operator<<(std::ostream& os, const Foo& f)
 {
