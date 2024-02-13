@@ -32,7 +32,7 @@
     <ClInclude Include="..\..\include\foo.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="array_list_utility.h">
+    <ClInclude Include="..\..\include\array_list_utility.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
