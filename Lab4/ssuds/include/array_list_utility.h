@@ -56,6 +56,31 @@ namespace ssuds {
             return -1;
         }
 
+        template <class T>
+        static int bubble_sort(ArrayList<T>& list, sortOrder order) {
+            // number of elements
+            int n = list.size();
+
+            int swap_count = 0;
+            // we need to do at most n passes to sort
+            for (int i = 0; i < n; i++) {
+                bool is_sorted = true;
+                // check for out of place neighbors
+                for (int j = 0; j < n - i - 1; j++) {
+                    bool swap = (order == sortOrder::Ascending) ? (list[j] > list[j + 1]) : (list[j] < list[j + 1]);
+                    if (swap) {
+                        std::swap(list[j], list[j + 1]);
+                        swap_count++;
+                        is_sorted = false;
+                    }
+                }
+                if (is_sorted) {
+                    break;
+                }
+            }
+            return swap_count;
+        }
+
     private:
         template <class T>
         static int partition(ArrayList<T>& list, int left_index, int right_index, sortOrder order, int& swap_count) {
