@@ -20,10 +20,40 @@ namespace ssuds {
 
             int pivot_index = partition(list, left_index, right_index, order, swap_count);
 
+            // pivot is in proper place. Sort halves on either side
             swap_count += quicksort(list, left_index, pivot_index -1, order);
             swap_count += quicksort(list, pivot_index + 1, right_index, order);
             
             return swap_count;
+        }
+
+        template <class T>
+        static int binary_search(const ArrayList<T>& list, const T& value, sortOrder order) {
+            // make sure list is always sorted before search
+            if (!is_sorted(list, order)) {
+                quicksort(list, order);
+            }
+
+            int left = 0;
+            int right = list.size() - 1;
+
+            while (left <= right) {
+                // mid = halfway between left and right
+                int mid = (left + right) / 2;
+                // the value is at mid
+                if (list[mid] == value) {
+                    return mid;
+                }
+                // focus on left-side
+                else if (list[mid] > value) {
+                    right = mid - 1;
+                }
+                // focus on right-side
+                else {
+                    left = mid + 1;
+                }
+            }
+            return -1;
         }
 
     private:
@@ -40,7 +70,7 @@ namespace ssuds {
             // put elements on "right" side of pivot
             int swap_index = left_index;
             for (int i = left_index; i < right_index; i++) {
-                // choose between ascending and descending sort https://www.w3schools.com/cpp/cpp_booleans_expressions.asp
+                // choose between ascending and descending sort https://www.geeksforgeeks.org/bool-in-c/
                 bool ASCorDesc = (order == sortOrder::Ascending) ? (list[i] < pivot_value) : (list[i] > pivot_value);
                 if (ASCorDesc) {
                     std::swap(list[i], list[swap_index]);
@@ -55,6 +85,20 @@ namespace ssuds {
 
             // return  index of pivot value
             return swap_index;
+        }
+
+        template <class T>
+        static bool is_sorted(const ArrayList<T>& list, sortOrder order) {
+            if (list.size() <= 1) {
+                return true;
+            }
+
+            for (size_t i = 0; i < list.size(); i++) {
+                if ((order == sortOrder::Ascending && list[i - 1] > list[i]) || (order == sortOrder::Descending && list[i - 1] < list[i])) {
+                    return false;
+                }
+            }
+            return true;
         }
     };
 }
