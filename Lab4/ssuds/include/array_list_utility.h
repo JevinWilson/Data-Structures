@@ -1,5 +1,7 @@
 #pragma once
 #include <Utility>
+#include <random>
+#include <iostream>
 #include <array_list.h>
 
 namespace ssuds {
@@ -79,6 +81,22 @@ namespace ssuds {
                 }
             }
             return swap_count;
+        }
+
+        template <class T>
+        static void shuffle(ArrayList<T>& list) {
+            std::random_device rd;
+            std::mt19937 eng(rd());
+            int n = list.size();
+
+            // "backwards" indicies stops at 1
+            for (int i = n -1; i > 0; --i) {
+                std::uniform_int_distribution<> distr(0, i);
+                // pick a random j (0…i)
+                int j = distr(eng);
+                // swap element i and j in my_list
+                std::swap(list[i], list[j]);
+            }
         }
 
     private:
