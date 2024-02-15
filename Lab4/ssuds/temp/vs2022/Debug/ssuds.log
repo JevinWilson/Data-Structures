@@ -1,5 +1,18 @@
-﻿  array_list_tests.cpp
-  array_list_utility_tests.cpp
-C:\Users\jaw06\Desktop\DS Assignments\Lab4\ssuds\src\array_list_utility_tests.cpp(20,23): warning C4018: '<': signed/unsigned mismatch
-  Generating Code...
-  ssuds.vcxproj -> C:\Users\jaw06\Desktop\DS Assignments\Lab4\ssuds\bin\vs2022\Debug\ssuds_d.exe
+﻿  array_list_utility_tests.cpp
+C:\Users\jaw06\Desktop\DS Assignments\Lab4\ssuds\src\array_list_utility_tests.cpp(28,23): warning C4018: '<': signed/unsigned mismatch
+C:\Users\jaw06\Desktop\DS Assignments\Lab4\ssuds\src\array_list_utility_tests.cpp(49,9): warning C4267: 'argument': conversion from 'size_t' to 'unsigned int', possible loss of data
+C:\Users\jaw06\Desktop\DS Assignments\Lab4\ssuds\include\array_list_utility.h(36,17): error C2672: 'ssuds::ArrayListUtility::quicksort': no matching overloaded function found
+  (compiling source file '../../src/array_list_utility_tests.cpp')
+  C:\Users\jaw06\Desktop\DS Assignments\Lab4\ssuds\include\array_list_utility.h(16,20):
+  could be 'int ssuds::ArrayListUtility::quicksort(ssuds::ArrayList<T> &,int,int,ssuds::sortOrder)'
+  	C:\Users\jaw06\Desktop\DS Assignments\Lab4\ssuds\include\array_list_utility.h(36,17):
+  	'int ssuds::ArrayListUtility::quicksort(ssuds::ArrayList<T> &,int,int,ssuds::sortOrder)': expects 4 arguments - 2 provided
+  C:\Users\jaw06\Desktop\DS Assignments\Lab4\ssuds\include\array_list_utility.h(36,17):
+  the template instantiation context (the oldest one first) is
+  	C:\Users\jaw06\Desktop\DS Assignments\Lab4\ssuds\src\array_list_utility_tests.cpp(87,42):
+  	see reference to function template instantiation 'int ssuds::ArrayListUtility::binary_search<int>(const ssuds::ArrayList<int> &,const T &,ssuds::sortOrder)' being compiled
+          with
+          [
+              T=int
+          ]
+  
