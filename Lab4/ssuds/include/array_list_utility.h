@@ -103,6 +103,7 @@ namespace ssuds {
         ArrayList<float> generate_random_list(int size) {
             std::random_device rd;
             std::mt19937 eng(rd());
+            // range of float
             std::uniform_real_distribution<> distr(0.0, 10.0);
 
             ArrayList<float> list;
@@ -110,6 +111,20 @@ namespace ssuds {
                 list.append(distr(eng));
             }
             return list;
+        }
+
+        template <class T>
+        static void merge_sort(ArrayList<T>& list, int left_index, int right_index) {
+            if (left_index < right_index) {
+                // mid point
+                int mid_index = (left_index + right_index) / 2;
+
+                merge_sort(list, left_index, mid_index);
+                merge_sort(list, mid_index + 1, right_index);
+
+                // merge two sorted halves
+                merge(list, left_index, mid_index, right_index);
+            }
         }
 
     private:
@@ -155,6 +170,54 @@ namespace ssuds {
                 }
             }
             return true;
+        }
+
+        // merge for merge_sort
+        template <class T>
+        static void merge(ArrayList<T>& list, int left_index, int mid_index, int right_index) {
+            int first_half = mid_index - left_index + 1;
+            int second_half = right_index - mid_index;
+
+            // store temp array
+            T* left = new T[first_half];
+            T* right = new T[second_half];
+
+            // copy to temp arrays
+            for (int i = 0; i < first_half; i++) {
+                left[i] = list[left_index + i];
+            }
+            for (int j = 0; j < second_half; j++) {
+                right[j] = list[mid_index + 1 + j];
+            }
+
+            int i = 0;
+            int j = 0;
+            int x = left_index;
+            while (i < first_half && j < second_half) {
+                if (left[i] <= right[j]) {
+                    list[x] = left[i];
+                    i++;
+                }
+                else {
+                    list[x] = right[j];
+                    j++;
+                }
+                x++;
+            }
+            // copy remaining elements
+            while (i < first_half) {
+                list[x] = left[i];
+                i++;
+                x++;
+            }
+            while (j < second_half) {
+                list[x] = right[j];
+                j++;
+                x++;
+            }
+            
+            delete[] left;
+            delete[] right;
         }
     };
 }

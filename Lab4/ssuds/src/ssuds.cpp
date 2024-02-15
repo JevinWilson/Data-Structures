@@ -30,7 +30,26 @@ int main() {
 
     for (int size = 1000; size <= 250000; size += 5000) {
         ssuds::ArrayList<float> list = generate_random_list(size);
+
+        // i. shuffle the ArrayList
+        auto shuffle_start = std::chrono::high_resolution_clock::now();
+        ssuds::ArrayListUtility::shuffle(list);
+        auto shuffle_end = std::chrono::high_resolution_clock::now();
+        auto shuffle_time = std::chrono::duration_cast<std::chrono::milliseconds>(shuffle_end - shuffle_start).count();
+
+        // ii. make a copy of the ArrayList
+        auto copy_start = std::chrono::high_resolution_clock::now();
+        ssuds::ArrayList<float> copy(list);
+        auto copy_end = std::chrono::high_resolution_clock::now();
+        auto copy_time = std::chrono::duration_cast<std::chrono::milliseconds>(copy_end - copy_start).count();
+
+        // iii. record the starting value
+
+        // iv. sort the original using merge sort
+
+        return 0;
     }
+
 }
 
 #endif
