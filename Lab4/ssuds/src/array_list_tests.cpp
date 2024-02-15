@@ -1,6 +1,7 @@
 #include <gtest/gtest.h>
 #include <array_list.h>
 
+
 #define EXECUTE_ARRAY_LIST_TESTS 1
 #if EXECUTE_ARRAY_LIST_TESTS
 

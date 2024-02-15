@@ -13,7 +13,7 @@ namespace ssuds {
     class ArrayListUtility {
     public:
         template <class T>
-        static int quicksort(ArrayList<T>& list, int left_index, int right_index , sortOrder order) {
+        static int quicksort(ArrayList<T>& list, int left_index, int right_index, sortOrder order) {
             int swap_count = 0;
             if (left_index >= right_index) {
                 // just one element -- nothing to do
