@@ -99,6 +99,19 @@ namespace ssuds {
             }
         }
 
+        // random list generator for #4
+        ArrayList<float> generate_random_list(int size) {
+            std::random_device rd;
+            std::mt19937 eng(rd());
+            std::uniform_real_distribution<> distr(0.0, 10.0);
+
+            ArrayList<float> list;
+            for (int i = 0; i < size; i++) {
+                list.append(distr(eng));
+            }
+            return list;
+        }
+
     private:
         template <class T>
         static int partition(ArrayList<T>& list, int left_index, int right_index, sortOrder order, int& swap_count) {
