@@ -101,7 +101,8 @@ namespace ssuds {
         }
 
         // random list generator for #4
-        ArrayList<float> generate_random_list(int size) {
+        template <class T>
+        static ArrayList<float> generate_random_list(int size) {
             std::random_device rd;
             std::mt19937 eng(rd());
             // range of float

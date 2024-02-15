@@ -1,18 +1,18 @@
-﻿  array_list_utility_tests.cpp
-C:\Users\jaw06\Desktop\DS Assignments\Lab4\ssuds\src\array_list_utility_tests.cpp(28,23): warning C4018: '<': signed/unsigned mismatch
-C:\Users\jaw06\Desktop\DS Assignments\Lab4\ssuds\src\array_list_utility_tests.cpp(49,9): warning C4267: 'argument': conversion from 'size_t' to 'unsigned int', possible loss of data
-C:\Users\jaw06\Desktop\DS Assignments\Lab4\ssuds\include\array_list_utility.h(36,17): error C2672: 'ssuds::ArrayListUtility::quicksort': no matching overloaded function found
-  (compiling source file '../../src/array_list_utility_tests.cpp')
-  C:\Users\jaw06\Desktop\DS Assignments\Lab4\ssuds\include\array_list_utility.h(16,20):
-  could be 'int ssuds::ArrayListUtility::quicksort(ssuds::ArrayList<T> &,int,int,ssuds::sortOrder)'
-  	C:\Users\jaw06\Desktop\DS Assignments\Lab4\ssuds\include\array_list_utility.h(36,17):
-  	'int ssuds::ArrayListUtility::quicksort(ssuds::ArrayList<T> &,int,int,ssuds::sortOrder)': expects 4 arguments - 2 provided
-  C:\Users\jaw06\Desktop\DS Assignments\Lab4\ssuds\include\array_list_utility.h(36,17):
-  the template instantiation context (the oldest one first) is
-  	C:\Users\jaw06\Desktop\DS Assignments\Lab4\ssuds\src\array_list_utility_tests.cpp(87,42):
-  	see reference to function template instantiation 'int ssuds::ArrayListUtility::binary_search<int>(const ssuds::ArrayList<int> &,const T &,ssuds::sortOrder)' being compiled
-          with
-          [
-              T=int
-          ]
+﻿  ssuds.cpp
+C:\Users\jaw06\Desktop\DS Assignments\Lab4\ssuds\include\array_list_utility.h(112,34): warning C4244: 'argument': conversion from 'double' to 'const T', possible loss of data
+C:\Users\jaw06\Desktop\DS Assignments\Lab4\ssuds\include\array_list_utility.h(112,34): warning C4244:         with
+C:\Users\jaw06\Desktop\DS Assignments\Lab4\ssuds\include\array_list_utility.h(112,34): warning C4244:         [
+C:\Users\jaw06\Desktop\DS Assignments\Lab4\ssuds\include\array_list_utility.h(112,34): warning C4244:             T=float
+C:\Users\jaw06\Desktop\DS Assignments\Lab4\ssuds\include\array_list_utility.h(112,34): warning C4244:         ]
+  (compiling source file '../../src/ssuds.cpp')
+  
+C:\Users\jaw06\Desktop\DS Assignments\Lab4\ssuds\src\ssuds.cpp(32,65): error C2352: 'ssuds::ArrayListUtility::generate_random_list': a call of a non-static member function requires an object
+  C:\Users\jaw06\Desktop\DS Assignments\Lab4\ssuds\include\array_list_utility.h(104,26):
+  see declaration of 'ssuds::ArrayListUtility::generate_random_list'
+  
+C:\Users\jaw06\Desktop\DS Assignments\Lab4\ssuds\src\ssuds.cpp(63,55): error C2672: 'ssuds::ArrayListUtility::binary_search': no matching overloaded function found
+  C:\Users\jaw06\Desktop\DS Assignments\Lab4\ssuds\include\array_list_utility.h(33,20):
+  could be 'int ssuds::ArrayListUtility::binary_search(const ssuds::ArrayList<T> &,const T &,ssuds::sortOrder)'
+  	C:\Users\jaw06\Desktop\DS Assignments\Lab4\ssuds\src\ssuds.cpp(63,55):
+  	'int ssuds::ArrayListUtility::binary_search(const ssuds::ArrayList<T> &,const T &,ssuds::sortOrder)': expects 3 arguments - 2 provided
   

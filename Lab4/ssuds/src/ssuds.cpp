@@ -29,7 +29,7 @@ int main() {
     }
 
     for (int size = 1000; size <= 250000; size += 5000) {
-        ssuds::ArrayList<float> list = generate_random_list(size);
+        ssuds::ArrayList<float> list = ssuds::ArrayListUtility::generate_random_list(size);
 
         // i. shuffle the ArrayList
         auto shuffle_start = std::chrono::high_resolution_clock::now();
