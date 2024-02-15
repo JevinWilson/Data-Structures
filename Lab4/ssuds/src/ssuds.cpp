@@ -44,8 +44,31 @@ int main() {
         auto copy_time = std::chrono::duration_cast<std::chrono::milliseconds>(copy_end - copy_start).count();
 
         // iii. record the starting value
+        float start_value = list[0];
 
         // iv. sort the original using merge sort
+        auto merge_sort_start = std::chrono::high_resolution_clock::now();
+        ssuds::ArrayListUtility::merge_sort(list, 0, list.size() - 1);
+        auto merge_sort_end = std::chrono::high_resolution_clock::now();
+        auto merge_sort_time = std::chrono::duration_cast<std::chrono::milliseconds>(merge_sort_end - merge_sort_start).count();
+
+        // v. sort the copy using bubble_sort
+        auto bubble_sort_start = std::chrono::high_resolution_clock::now();
+        ssuds::ArrayListUtility::bubble_sort(copy, ssuds::sortOrder::Ascending);
+        auto bubble_sort_end = std::chrono::high_resolution_clock::now();
+        auto bubble_sort_time = std::chrono::duration_cast<std::chrono::milliseconds>(bubble_sort_end - bubble_sort_start).count();
+
+        // vi. find an element using binary_search
+        auto binary_search_start = std::chrono::high_resolution_clock::now();
+        int b_search_index = ssuds::ArrayListUtility::binary_search(list, start_value);
+        auto binary_search_end = std::chrono::high_resolution_clock::now();
+        auto binary_search_time = std::chrono::duration_cast<std::chrono::milliseconds>(binary_search_end - binary_search_start).count();
+
+        // vii. find an element (linear search)
+        auto find_start = std::chrono::high_resolution_clock::now();
+        int find_index = list.find(start_value);
+        auto find_end = std::chrono::high_resolution_clock::now();
+        auto find_time = std::chrono::duration_cast<std::chrono::milliseconds>(find_end - find_start).count();
 
         return 0;
     }

@@ -55,6 +55,7 @@ namespace ssuds {
                     left = mid + 1;
                 }
             }
+            // value was not found
             return -1;
         }
 
@@ -215,7 +216,7 @@ namespace ssuds {
                 j++;
                 x++;
             }
-            
+
             delete[] left;
             delete[] right;
         }
