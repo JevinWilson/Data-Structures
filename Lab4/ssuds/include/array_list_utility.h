@@ -31,9 +31,12 @@ namespace ssuds {
 
         template <class T>
         static int binary_search(const ArrayList<T>& list, const T& value, sortOrder order) {
+            // copy for timing
+            ArrayList<T> list_copy = list;
+            
             // make sure list is always sorted before search
-            if (!is_sorted(list, order)) {
-                quicksort(list, order);
+            if (!is_sorted(list_copy, order)) {
+                quicksort(list_copy, 0, list_copy.size() - 1, order);
             }
 
             int left = 0;
@@ -101,7 +104,6 @@ namespace ssuds {
         }
 
         // random list generator for #4
-        template <class T>
         static ArrayList<float> generate_random_list(int size) {
             std::random_device rd;
             std::mt19937 eng(rd());

@@ -60,7 +60,7 @@ int main() {
 
         // vi. find an element using binary_search
         auto binary_search_start = std::chrono::high_resolution_clock::now();
-        int b_search_index = ssuds::ArrayListUtility::binary_search(list, start_value);
+        int b_search_index = ssuds::ArrayListUtility::binary_search(list, start_value, ssuds::sortOrder::Ascending);
         auto binary_search_end = std::chrono::high_resolution_clock::now();
         auto binary_search_time = std::chrono::duration_cast<std::chrono::milliseconds>(binary_search_end - binary_search_start).count();
 
