@@ -50,6 +50,26 @@ TEST_F(ArrayListUtilityTest, bubble_sortTest) {
     }
 }
 
+TEST_F(ArrayListUtilityTest, insertion_sortTest) {
+    list.append(4);
+    list.append(1);
+    list.append(3);
+    list.append(2);
+
+    // Expected sorted list
+    ssuds::ArrayList<int> sorted_list;
+    sorted_list.append(1);
+    sorted_list.append(2);
+    sorted_list.append(3);
+    sorted_list.append(4);
+
+    ssuds::ArrayListUtility::insertion_sort(list, ssuds::sortOrder::Ascending);
+
+    for (size_t i = 0; i < list.size() - 1; i++) {
+        EXPECT_EQ(sorted_list[i], list[i]);
+    }
+}
+
 // not working
 /*TEST_F(ArrayListUtilityTest, shuffleTest) {
     list.append(1);
@@ -61,7 +81,10 @@ TEST_F(ArrayListUtilityTest, bubble_sortTest) {
     // save list for comparison later
     ssuds::ArrayList<int> original_list = list;
 
+    ssuds::ArrayListUtility::shuffle(list);
+
     bool shuffled = false;
+    // shuffle 10 times
     for (int i = 0; i < 10; i++) {
         ssuds::ArrayListUtility::shuffle(list);
         // equal() = https://www.geeksforgeeks.org/stdequal-in-cpp/
@@ -72,7 +95,6 @@ TEST_F(ArrayListUtilityTest, bubble_sortTest) {
     }
     EXPECT_TRUE(shuffled);
 }*/
-
 // not working
 /*TEST_F(ArrayListUtilityTest, binary_searchTest) {
     list.append(1);
@@ -85,6 +107,7 @@ TEST_F(ArrayListUtilityTest, bubble_sortTest) {
     int right_index = list.size() - 1;
     ssuds::ArrayListUtility::quicksort(list, left_index, right_index, ssuds::sortOrder::Ascending);
 
-    int index = ssuds::ArrayListUtility::binary_search(list, 2, ssuds::sortOrder::Ascending);
+    int operation_count = 0;
+    int index = ssuds::ArrayListUtility::binary_search(list, 2, ssuds::sortOrder::Ascending, operation_count);
     EXPECT_EQ(1, index);
 }*/

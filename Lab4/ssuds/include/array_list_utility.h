@@ -30,7 +30,7 @@ namespace ssuds {
         }
 
         template <class T>
-        static int binary_search(const ArrayList<T>& list, const T& value, sortOrder order) {
+        static int binary_search(const ArrayList<T>& list, const T& value, sortOrder order, int& operation_count) {
             // copy for timing
             ArrayList<T> list_copy = list;
             
@@ -43,8 +43,10 @@ namespace ssuds {
             int right = list.size() - 1;
 
             while (left <= right) {
+                operation_count++;
                 // mid = halfway between left and right
                 int mid = (left + right) / 2;
+                operation_count++;
                 // the value is at mid
                 if (list[mid] == value) {
                     return mid;
@@ -88,10 +90,11 @@ namespace ssuds {
         }
 
         template <class T>
-        static void shuffle(ArrayList<T>& list) {
+        static int shuffle(ArrayList<T>& list) {
             std::random_device rd;
             std::mt19937 eng(rd());
             int n = list.size();
+            int swap_count = 0;
 
             // "backwards" indicies stops at 1
             for (int i = n -1; i > 0; --i) {
@@ -100,7 +103,9 @@ namespace ssuds {
                 int j = distr(eng);
                 // swap element i and j in my_list
                 std::swap(list[i], list[j]);
+                swap_count++;
             }
+            return swap_count;
         }
 
         // random list generator for #4
@@ -118,16 +123,31 @@ namespace ssuds {
         }
 
         template <class T>
-        static void merge_sort(ArrayList<T>& list, int left_index, int right_index) {
+        static void merge_sort(ArrayList<T>& list, int left_index, int right_index, int& operation_count) {
             if (left_index < right_index) {
                 // mid point
                 int mid_index = (left_index + right_index) / 2;
 
-                merge_sort(list, left_index, mid_index);
-                merge_sort(list, mid_index + 1, right_index);
+                merge_sort(list, left_index, mid_index, operation_count);
+                merge_sort(list, mid_index + 1, right_index, operation_count);
 
                 // merge two sorted halves
-                merge(list, left_index, mid_index, right_index);
+                merge(list, left_index, mid_index, right_index, operation_count);
+            }
+        }
+
+        // https://www.geeksforgeeks.org/insertion-sort/
+        template <class T>
+        static void insertion_sort(ArrayList<T>& list, sortOrder order) {
+            for (int i = 1; i < list.size(); i++) {
+                T value = list[i];
+                int j = i - 1;
+
+                while (j >= 0 && ((order == sortOrder::Ascending && list[j] > value) || (order == sortOrder::Descending && list[j] < value))) {
+                    list[j + 1] = list[j];
+                    j--;
+                }
+                list[j + 1] = value;
             }
         }
 
@@ -168,7 +188,9 @@ namespace ssuds {
                 return true;
             }
 
-            for (size_t i = 0; i < list.size(); i++) {
+            // accidently typed "i = 0" and caused an infinite LOOP!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+            // spent hours just finding it
+            for (size_t i = 1; i < list.size(); i++) {
                 if ((order == sortOrder::Ascending && list[i - 1] > list[i]) || (order == sortOrder::Descending && list[i - 1] < list[i])) {
                     return false;
                 }
@@ -178,7 +200,7 @@ namespace ssuds {
 
         // merge for merge_sort
         template <class T>
-        static void merge(ArrayList<T>& list, int left_index, int mid_index, int right_index) {
+        static void merge(ArrayList<T>& list, int left_index, int mid_index, int right_index, int& operation_count) {
             int first_half = mid_index - left_index + 1;
             int second_half = right_index - mid_index;
 
@@ -198,6 +220,7 @@ namespace ssuds {
             int j = 0;
             int x = left_index;
             while (i < first_half && j < second_half) {
+                operation_count++;
                 if (left[i] <= right[j]) {
                     list[x] = left[i];
                     i++;
@@ -207,17 +230,20 @@ namespace ssuds {
                     j++;
                 }
                 x++;
+                operation_count++;
             }
             // copy remaining elements
             while (i < first_half) {
                 list[x] = left[i];
                 i++;
                 x++;
+                operation_count++;
             }
             while (j < second_half) {
                 list[x] = right[j];
                 j++;
                 x++;
+                operation_count++;
             }
 
             delete[] left;
