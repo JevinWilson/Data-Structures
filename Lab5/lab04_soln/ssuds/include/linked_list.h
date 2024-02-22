@@ -10,6 +10,7 @@ namespace ssuds
 	template <class T>
 	class LinkedList {
 	protected:
+		/// @brief Node class
 		struct Node {
 			T mData;
 			Node* mNext;
@@ -23,11 +24,12 @@ namespace ssuds
 		Node* mTail;
 
 	public:
+		/// @brief Default constructor
 		LinkedList() : mHead(nullptr), mTail(nullptr) {
 			// default constructor
 		}
 
-		// destructor, deletes all nodes
+		/// @brief Destructor - deletes all nodes in the list
 		~LinkedList() {
 			Node* current = mHead;
 			while (current != nullptr) {
@@ -37,6 +39,8 @@ namespace ssuds
 			}
 		}
 
+		/// @brief counts the number of nodes in the list
+		/// @return the number of nodes in the list
 		unsigned int size() const {
 			unsigned int count = 0;
 			Node* current = mHead;
@@ -47,6 +51,9 @@ namespace ssuds
 			return count;
 		}
 
+		/// @brief provide access to the list
+		/// @param index of the element to access
+		/// @return reference to the element at index
 		T& operator[](unsigned int index) const {
 			if (index >= size())
 				throw std::out_of_range("Out of range");
@@ -65,6 +72,8 @@ namespace ssuds
 			return current -> mData;
 		}
 
+		/// @brief adds element to end of list
+		/// @param data the element to add
 		void append(const T& data) {
 			// allocate memory
 			Node* newNode = new Node(data);
@@ -83,6 +92,8 @@ namespace ssuds
 			}
 		}
 
+		/// @brief adds element to beginning of list
+		/// @param data the element to add
 		void prepend(const T& data) {
 			// allocte memory
 			Node* newNode = new Node(data, nullptr, mHead);
@@ -97,6 +108,10 @@ namespace ssuds
 			mHead = newNode;
 		}
 
+		/// @brief operator overload for <<
+		/// @param os AL: []
+		/// @param list elements in list 1, 2, 3, 4
+		/// @return in this form "AL: [1, 2, 3, 4]"
 		friend std::ostream& operator<<(std::ostream& os, const LinkedList<T>& list) {
 			os << "AL: [";
 			Node* current = list.mHead;
@@ -111,6 +126,7 @@ namespace ssuds
 			return os;
 		}
 
+		/// @brief clears the list
 		void clear() {
 			Node* current = mHead;
 			while (current != nullptr) {
