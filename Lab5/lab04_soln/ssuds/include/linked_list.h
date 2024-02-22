@@ -5,13 +5,16 @@
 // entirely in the .h file (no .cpp files).  So, in this lab, array_list.cpp
 // contents are moved here
 
-namespace ssuds
+namespace ssuds 
 {
 	template <class T>
-	class LinkedList {
+	class LinkedList 
+	{
 	protected:
 		/// @brief Node class
-		struct Node {
+		struct Node 
+		{
+		public:
 			T mData;
 			Node* mNext;
 			Node* mPrev;
@@ -136,6 +139,56 @@ namespace ssuds
 			}
 			mHead = nullptr;
 			mTail = nullptr;
+		}
+
+		/********************* #3 *********************/
+		class LinkedListIterator 
+		{
+		private:
+			const LinkedList<T>* mList;
+			Node* mCurrent;
+			unsigned int mIndex;
+
+		public:
+			LinkedListIterator(const LinkedList<T>* list, Node* startNode) : mList(list), mCurrent(startNode), mIndex(0) {
+				// if startNode is not the head, calc the index
+				if (startNode != nullptr && startNode != list -> mHead) {
+					Node* node = list -> mHead;
+					while (node != startNode && node != nullptr) {
+						node = node -> mNext;
+						++mIndex;
+					}
+				}
+			}
+			
+			// check for more elements
+			bool checkNext() const {
+				return mCurrent!= nullptr;
+			}
+
+			// move to next element
+			T& next() {
+				if (!checkNext()) 
+					throw std::out_of_range("Out of range");
+				T& data = mCurrent -> mData;
+				mCurrent = mCurrent -> mNext;
+				++mIndex;
+			}
+
+			// get current index of iterator
+			unsigned int index() const {
+				return mIndex;
+			}
+		};
+
+		// get iterator to start of list
+		LinkedListIterator begin() const {
+			return LinkedListIterator(this, mHead);
+		}
+
+		// get iterator to end of list
+		LinkedListIterator end() const {
+			return LinkedListIterator(this, nullptr);
 		}
 		
 	};
