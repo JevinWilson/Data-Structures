@@ -35,7 +35,9 @@ int main()
     list.append(7);
     list.prepend(1);
     
-
     std::cout << list << std::endl;
+
+    unsigned int list_size = list.size();
+    std::cout << "Size of list: " << list_size << std::endl;
 #endif
 }
