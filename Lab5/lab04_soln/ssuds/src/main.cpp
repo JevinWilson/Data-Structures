@@ -34,10 +34,21 @@ int main()
     list.append(6);
     list.append(7);
     list.prepend(1);
-    
+        
     std::cout << list << std::endl;
 
     unsigned int list_size = list.size();
     std::cout << "Size of list: " << list_size << std::endl;
+
+    int value_find = 1;
+    auto it = list.find(value_find);
+    if (it!= list.end()) {
+        std::cout << "Found value: " << value_find << " at index: " << it.index() << std::endl;
+    }
+    else {
+        std::cout << "Value not found: " << value_find << std::endl;
+    }
+
+
 #endif
 }

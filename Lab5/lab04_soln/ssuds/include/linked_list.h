@@ -150,7 +150,7 @@ namespace ssuds
 			unsigned int mIndex;
 
 		public:
-			LinkedListIterator(const LinkedList<T>* list, Node* startNode) : mList(list), mCurrent(startNode), mIndex(0) {
+			LinkedListIterator(const LinkedList<T>* list, Node* startNode, unsigned int index = 0) : mList(list), mCurrent(startNode), mIndex(index) {
 				// if startNode is not the head, calc the index
 				if (startNode != nullptr && startNode != list -> mHead) {
 					Node* node = list -> mHead;
@@ -160,11 +160,27 @@ namespace ssuds
 					}
 				}
 			}
-			
+
+			LinkedListIterator& operator++() {
+				if (mCurrent) {
+					mCurrent = mCurrent -> mNext;
+					++mIndex;
+				}
+				return *this;
+			}
+			/*
+			LinkedListIterator operator++(int) {
+				LinkedListIterator temp = *this;
+				++(*this);
+				return temp;
+			}
+			*/
+
 			// check for more elements
 			bool checkNext() const {
 				return mCurrent!= nullptr;
 			}
+			
 
 			// move to next element
 			T& next() {
@@ -173,13 +189,35 @@ namespace ssuds
 				T& data = mCurrent -> mData;
 				mCurrent = mCurrent -> mNext;
 				++mIndex;
+				return data;
 			}
 
 			// get current index of iterator
 			unsigned int index() const {
 				return mIndex;
 			}
+
+			bool operator!= (const LinkedListIterator& other) const {
+				return mCurrent!= other.mCurrent;
+			}
 		};
+
+		LinkedListIterator find(const T& data) const {
+			Node* mCurrent = mHead;
+			unsigned int index = 0;
+
+			// iterate through list until we find the element
+			while (mCurrent != nullptr) {
+				if (mCurrent -> mData == data) {
+					// if found
+					return LinkedListIterator(this, mCurrent, index);
+				}
+				mCurrent = mCurrent -> mNext;
+				++index;
+			}
+			// not found, loop to the end
+			return end();
+		}		
 
 		// get iterator to start of list
 		LinkedListIterator begin() const {
