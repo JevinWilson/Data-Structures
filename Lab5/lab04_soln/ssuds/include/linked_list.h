@@ -141,9 +141,47 @@ namespace ssuds
 			mTail = nullptr;
 		}
 
-		/********************* #3 *********************/
+		class LinkedListIterator;
+		LinkedListIterator remove(LinkedListIterator it) {
+			if (it.mCurrent == nullptr) {
+				return end();
+			}
+
+			Node* nodeToRemove = it.mCurrent;
+			Node* nextNode = nodeToRemove -> mNext;
+
+			// if nodeToRemove is the head
+			if (nodeToRemove == mHead) {
+				mHead = nextNode;
+				if (mHead) {
+					mHead -> mPrev = nullptr;
+				}
+			}
+			else {
+				nodeToRemove -> mPrev -> mNext = nextNode;
+			}
+
+			// if nodeToRemove is the tail
+			if (nodeToRemove == mTail) {
+				mTail = nodeToRemove -> mPrev;
+				if (mTail) {
+					mTail -> mNext = nullptr;
+				}
+			}
+			else {
+				nextNode -> mPrev = nodeToRemove -> mPrev;
+			}
+			delete nodeToRemove;
+			// if nextNode is null, return end() b/c the last element was removed
+			return nextNode ? LinkedListIterator(this, nextNode) : end();
+		}
+
+		/********************* #3/#4 *********************/
 		class LinkedListIterator 
 		{
+			// friend class for remove() to work
+			friend class LinkedList<T>;
+
 		private:
 			const LinkedList<T>* mList;
 			Node* mCurrent;
@@ -168,13 +206,6 @@ namespace ssuds
 				}
 				return *this;
 			}
-			/*
-			LinkedListIterator operator++(int) {
-				LinkedListIterator temp = *this;
-				++(*this);
-				return temp;
-			}
-			*/
 
 			// check for more elements
 			bool checkNext() const {
@@ -197,8 +228,20 @@ namespace ssuds
 				return mIndex;
 			}
 
+			// needed to test find method in main
 			bool operator!= (const LinkedListIterator& other) const {
 				return mCurrent!= other.mCurrent;
+			}
+			// needed to test find method in main
+			bool operator== (const LinkedListIterator& other) const {
+				return mCurrent == other.mCurrent;
+			}
+			// needed to test find method in gtest
+			T& operator*() {
+				if (mCurrent == nullptr) {
+					throw std::out_of_range("Can't be dereferenced");
+				}
+				return mCurrent -> mData;
 			}
 		};
 

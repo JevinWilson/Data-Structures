@@ -11,7 +11,7 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="..\..\src\array_list_tests.cpp" />
+    <ClCompile Include="..\..\src\linked_list_test.cpp" />
     <ClCompile Include="..\..\src\array_list_utility_tests.cpp" />
     <ClCompile Include="..\..\src\foo.cpp" />
     <ClCompile Include="..\..\src\main.cpp" />

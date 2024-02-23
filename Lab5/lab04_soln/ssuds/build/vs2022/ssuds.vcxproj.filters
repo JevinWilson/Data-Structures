@@ -21,7 +21,7 @@
     <ClCompile Include="..\..\src\foo.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\src\array_list_tests.cpp">
+    <ClCompile Include="..\..\src\linked_list_test.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="..\..\src\array_list_utility_tests.cpp">

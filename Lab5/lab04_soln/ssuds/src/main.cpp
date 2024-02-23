@@ -1,25 +1,16 @@
 // ssuds.cpp : This file contains the 'main' function. Program execution begins and ends there.
-#define DO_UNIT_TESTING 0
+#define DO_UNIT_TESTING 1
 #include <iostream>
 #if DO_UNIT_TESTING
 #include <gtest/gtest.h>
 #else
 #include <linked_list.h>
-//#include <array_list_utility.h>
-//#include <random>
-//#include <fstream>
-//#include <chrono>
 #endif
-
-
-#define DO_TIMING_BUBBLE_SORT 0
-#define DO_TIMING_QUCKSORT 0
-#define DO_TIMING_OTHERS 1
 
 #include <fstream> 
 int main()
 {
-#if DO_UNIT_TESTING
+#if DO_UNIT_TESTING 1
     // Invoke all google test fixtures we've registered
     testing::InitGoogleTest();
     return RUN_ALL_TESTS();
