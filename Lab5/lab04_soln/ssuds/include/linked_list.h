@@ -141,6 +141,7 @@ namespace ssuds
 			mTail = nullptr;
 		}
 
+		/// @brief searches for the first element that matches the value and removes it
 		class LinkedListIterator;
 		LinkedListIterator remove(LinkedListIterator it) {
 			if (it.mCurrent == nullptr) {
@@ -188,6 +189,10 @@ namespace ssuds
 			unsigned int mIndex;
 
 		public:
+			/// @brief iterator constructor
+			/// @param list the list to iterate over
+			/// @param startNode the node to start at
+			/// @param index the index of the startNode
 			LinkedListIterator(const LinkedList<T>* list, Node* startNode, unsigned int index = 0) : mList(list), mCurrent(startNode), mIndex(index) {
 				// if startNode is not the head, calc the index
 				if (startNode != nullptr && startNode != list -> mHead) {
@@ -199,6 +204,8 @@ namespace ssuds
 				}
 			}
 
+			/// @brief advance iterator to the next element
+			/// @return returns a reference to the iterator
 			LinkedListIterator& operator++() {
 				if (mCurrent) {
 					mCurrent = mCurrent -> mNext;
@@ -212,7 +219,6 @@ namespace ssuds
 				return mCurrent!= nullptr;
 			}
 			
-
 			// move to next element
 			T& next() {
 				if (!checkNext()) 
@@ -245,6 +251,9 @@ namespace ssuds
 			}
 		};
 
+		/// @brief finds the first element that matches the value
+		/// @param data the value to search for
+		/// @return iterator to the first element that matches the value
 		LinkedListIterator find(const T& data) const {
 			Node* mCurrent = mHead;
 			unsigned int index = 0;
