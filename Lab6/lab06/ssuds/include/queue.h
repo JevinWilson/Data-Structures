@@ -7,9 +7,13 @@
 namespace ssuds 
 {
     template <class T>
-    class queue
-    {
-        
-    }
+    class queue : private LinkedList<T> {
+        void enqueue(const T& new_val) {
+            this->append(new_val);
+            LinkedList<T>::append(new_val)
+        }
+    public:
+        using LinkedList<T>::begin;
+    };
 }
 
