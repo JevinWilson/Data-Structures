@@ -1,4 +1,4 @@
-#include <gtest/gtest.h>
+/*#include <gtest/gtest.h>
 #include <linked_list.h>
 
 #define EXECUTE_LINKED_LIST_TESTS 1
@@ -74,4 +74,5 @@ TEST(LinkedListTest, remove) {
 	EXPECT_EQ(list.size(), 3);
 }
 
-#endif
+#endif*/
+

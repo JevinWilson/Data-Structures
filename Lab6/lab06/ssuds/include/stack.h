@@ -16,10 +16,11 @@ namespace ssuds
         }
 
         T pop() {
-            if (mList.size() == 0)
+            if (empty())
                 throw std::out_of_range("Out of range");
-            T val = mList[0];
-            mList.remove(0);
+            typename LinkedList<T>::LinkedListIterator it = mList.begin();
+            T val = *it;
+            mList.remove(it);
             return val;
         }
 

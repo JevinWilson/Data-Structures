@@ -16,8 +16,9 @@ namespace ssuds
         T dequeue() {
             if (this -> size() == 0)
                 throw std::out_of_range("out of range");
-            T val = (*this)[0];
-            this -> remove(0);
+            typename LinkedList<T>::LinkedListIterator it = this->begin();
+            T val = *it;
+            this -> remove(it);
             return val;
         }
 
