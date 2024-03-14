@@ -17,6 +17,7 @@
     <ClCompile Include="..\..\src\main.cpp" />
     <ClCompile Include="..\..\src\stack_queue_tests.cpp" />
     <ClCompile Include="..\..\src\text_circle.cpp" />
+    <ClCompile Include="..\..\src\word_drawer.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\include\linked_list.h" />
@@ -25,6 +26,7 @@
     <ClInclude Include="..\..\include\queue.h" />
     <ClInclude Include="..\..\include\stack.h" />
     <ClInclude Include="..\..\include\text_circle.h" />
+    <ClInclude Include="..\..\include\word_drawer.h" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>
