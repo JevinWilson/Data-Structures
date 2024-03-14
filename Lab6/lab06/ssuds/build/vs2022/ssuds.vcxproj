@@ -20,6 +20,7 @@
     <ClCompile Include="..\..\src\word_drawer.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="..\..\include\array_list.h" />
     <ClInclude Include="..\..\include\linked_list.h" />
     <ClInclude Include="..\..\include\array_list_utility.h" />
     <ClInclude Include="..\..\include\foo.h" />
