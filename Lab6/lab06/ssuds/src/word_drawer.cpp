@@ -19,6 +19,10 @@ namespace WordDrawer
     WordDrawer::~WordDrawer() {
         if (mWordFile.is_open()) 
             mWordFile.close();
+        for (auto& word : mPlacedWords)
+            delete word;
+        if (mActiveWord)
+            delete mActiveWord;
     }
 
     void WordDrawer::loadWords() {
@@ -32,7 +36,19 @@ namespace WordDrawer
     void WordDrawer::update(sf::RenderWindow& window) {
         sf::Event event;
         while (window.pollEvent(event)) {
-            if (event.type == sf::Event::MouseButtonPressed) {
+            if (event.type == sf::Event::KeyPressed && event.key.control && event.key.code == sf::Keyboard::Z && !UndoStack.empty()) {
+                Undo lastAction = UndoStack.top();
+                UndoStack.pop();
+                if (lastAction.type == Undo::Place) {
+                    auto it = std::find(mPlacedWords.begin(), mPlacedWords.end(), lastAction.circle);
+                    if (it != mPlacedWords.end()) {
+                        delete *it;
+                        mPlacedWords.erase(it);
+                    }
+                }
+                else if (lastAction.type == Undo::Move) {
+                    lastAction.circle -> setPosition(lastAction.prevPostition);
+                }
                 sf::Vector2f mousePosition = (sf::Vector2f)sf::Mouse::getPosition(window);
                 if (event.mouseButton.button == sf::Mouse::Left) {
                     if (!mActiveWord) {
@@ -60,6 +76,10 @@ namespace WordDrawer
     }
 
     void WordDrawer::draw(sf::RenderWindow& window) {
+        for (auto& word : mPlacedWords) 
+            window.draw(*word);
+        if (mActiveWord)
+            window.draw(*mActiveWord);
         window.draw(mStatusText);
     }
 }
