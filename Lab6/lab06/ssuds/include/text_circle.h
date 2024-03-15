@@ -13,7 +13,7 @@ namespace sf
 
 	public:
 		TextCircle();
-		TextCircle::TextCircle(float x, float y, const Font& font_ref, const std::string& text);
+		TextCircle(float x, float y, const Font& font_ref, const std::string& text);
 		void setPosition(const Vector2f& position);
 		Vector2f getPosition() const;
 		bool isInside(const Vector2f& point) const;

@@ -3,6 +3,9 @@
 namespace WordDrawer
 {
     WordDrawer::WordDrawer(const std::string& filepath, const sf::Font& font) : mFont(font), mActiveWord(nullptr) {
+        /*std::random_device rd;
+        rndm = std::mt19937(rd());*/
+
         mWordFile.open(filepath, std::ios::binary);
         if (!mWordFile.is_open())
             throw std::runtime_error("failed to open file");
@@ -27,8 +30,8 @@ namespace WordDrawer
 
     void WordDrawer::loadWords() {
         std::string word;
-        while (std::getline(mWordFile, word)) {
-            sf::TextCircle newWord(0, 0, mFont, word);
+        while (std::getline(mWordFile, word) && mWordQueue.size() < 10) {
+            sf::TextCircle* newWord = new sf::TextCircle(100, 100, mFont, word); 
             mWordQueue.enqueue(newWord);
         }
     }
@@ -36,50 +39,56 @@ namespace WordDrawer
     void WordDrawer::update(sf::RenderWindow& window) {
         sf::Event event;
         while (window.pollEvent(event)) {
+            if (event.type == sf::Event::Closed) {
+                window.close();
+            }
+
+            // CTRL+Z Undo
             if (event.type == sf::Event::KeyPressed && event.key.control && event.key.code == sf::Keyboard::Z && !UndoStack.empty()) {
                 Undo lastAction = UndoStack.top();
                 UndoStack.pop();
                 if (lastAction.type == Undo::Place) {
                     auto it = std::find(mPlacedWords.begin(), mPlacedWords.end(), lastAction.circle);
                     if (it != mPlacedWords.end()) {
-                        delete *it;
+                        delete* it; 
                         mPlacedWords.erase(it);
                     }
                 }
                 else if (lastAction.type == Undo::Move) {
-                    lastAction.circle -> setPosition(lastAction.prevPostition);
+                    lastAction.circle->setPosition(lastAction.prevPosition);
                 }
-                sf::Vector2f mousePosition = (sf::Vector2f)sf::Mouse::getPosition(window);
-                if (event.mouseButton.button == sf::Mouse::Left) {
-                    if (!mActiveWord) {
-                        // dequeue a word and make it active
-                        if (!mWordQueue.empty()) {
-                            mActiveWord = &mWordQueue.dequeue();
-                            mActiveWord -> setPosition(mousePosition);
-                        }
-                    }
-                    else {
-                        mActiveWord = nullptr;
+            }
+
+            if (event.type == sf::Event::MouseButtonPressed) {
+                if (event.type == sf::Event::MouseButtonPressed && event.mouseButton.button == sf::Mouse::Left) {
+                    sf::Vector2f mousePosition = static_cast<sf::Vector2f>(sf::Mouse::getPosition(window));
+                    //std::cout << "Left-click at: " << mousePosition.x << ", " << mousePosition.y << std::endl;
+
+                    // Ensure there's a word to spawn
+                    if (!mWordQueue.empty()) {
+                        sf::TextCircle* newCircle = mWordQueue.dequeue();
+                        newCircle->setPosition(mousePosition); 
+                        mPlacedWords.push_back(newCircle); 
                     }
                 }
+
                 else if (event.mouseButton.button == sf::Mouse::Right && mActiveWord) {
-                    // discard active word
+                    delete mActiveWord;
                     mActiveWord = nullptr;
                 }
             }
-            if (mActiveWord) {
-                // move active word with mouse
-                sf::Vector2f mousePosition = (sf::Vector2f)sf::Mouse::getPosition(window);
-                mActiveWord -> setPosition(mousePosition);
-            }
+
         }
     }
 
+
     void WordDrawer::draw(sf::RenderWindow& window) {
-        for (auto& word : mPlacedWords) 
+        for (auto& word : mPlacedWords) {
             window.draw(*word);
-        if (mActiveWord)
+        }
+        if (mActiveWord) {
             window.draw(*mActiveWord);
+        }
         window.draw(mStatusText);
     }
 }
