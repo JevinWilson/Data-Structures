@@ -21,30 +21,30 @@ namespace ssuds
 
         Node* root;
 
-        Node* insert(Node* node, const T& val) {
+        Node* insertRec(Node* node, const T& val) {
             if (node == nullptr) {
                 return new Node(val);
             }
             if (val < node->value) {
-                node->left = insert(node->left, val);
+                node->left = insertRec(node->left, val);
             }
             else if (val > node->value) {
-                node->right = insert(node->right, val);
+                node->right = insertRec(node->right, val);
             }
             return node;
         }
 
-        void traversal(Node* node, std::vector<T>& vec) const {
+        void traversalRec(Node* node, std::vector<T>& vec) const {
             if (node != nullptr) {
-                traversal(node->left, vec);
+                traversalRec(node->left, vec);
                 vec.push_back(node->value);
-                traversal(node->right, vec);
+                traversalRec(node->right, vec);
             }
         }
 
-        Node* rebalance(Node* node) {
+        Node* rebalanceRec(Node* node) {
             std::vector<T> values;
-            traversal(node, values);
+            traversalRec(node, values);
             return rebalanceRecursion(values, 0, values.size() - 1);
         }
         Node* rebalanceRecursion(const std::vector<T>& values, int start, int end) {
@@ -59,30 +59,30 @@ namespace ssuds
             return node;
         }
 
-        void clear(Node* &node) {
+        void clearRec(Node* &node) {
             if (node != nullptr) {
-                clear(node->left);
-                clear(node->right);
+                clearRec(node->left);
+                clearRec(node->right);
                 delete node;
                 node = nullptr;
             }
         }
 
-        int get_height(Node* node) const {
+        int get_heightRec(Node* node) const {
             if (node == nullptr) {
                 return 0;
             }
-            return 1 + std::max(get_height(node->left), get_height(node->right));
+            return 1 + std::max(get_heightRec(node->left), get_heightRec(node->right));
         }
 
-        size_t size(Node* node) const {
+        size_t sizeRec(Node* node) const {
             if (node == nullptr) {
                 return 0;
             }
-            return 1 + size(node->left) + size(node->right);
+            return 1 + sizeRec(node->left) + sizeRec(node->right);
         }
 
-        bool contains(Node* node, const T& val) const {
+        bool containsRec(Node* node, const T& val) const {
             if (node == nullptr) {
                 return false;
             }
@@ -90,10 +90,10 @@ namespace ssuds
                 return true;
             }
             else if (val < node->value) {
-                return contains(node->left, val);
+                return containsRec(node->left, val);
             }
             else {
-                return contains(node->right, val);
+                return containsRec(node->right, val);
             }
         }
     
@@ -103,37 +103,37 @@ namespace ssuds
         }
 
         ~OrderedSet() {
-            clear(root);
+            clearRec(root);
         }
 
         void insert(const T& val) {
-            root = insert(root, val);
+            root = insertRec(root, val);
         }
 
         std::vector<T> traversal() const {
             std::vector<T> vec;
-            traversal(root, vec);
+            traversalRec(root, vec);
             return vec;
         }
 
         void rebalance() {
-            root = rebalance(root);
+            root = rebalanceRec(root);
         }
 
         void clear() {
-            clear(root);
+            clearRec(root);
         }
 
         size_t size() const {
-            return size(root);
+            return sizeRec(root);
         }
 
         bool contains(const T& val) const {
-            return contains(root, val);
+            return containsRec(root, val);
         }
 
         int get_height() const {
-            return get_height(root);
+            return get_heightRec(root);
         }
     };
 }

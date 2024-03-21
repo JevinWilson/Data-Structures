@@ -18,6 +18,7 @@
     <ClCompile Include="..\..\src\ssuds\array_list_tests.cpp" />
     <ClCompile Include="..\..\src\ssuds\array_list_utility_tests.cpp" />
     <ClCompile Include="..\..\src\ssuds\linked_list_tests.cpp" />
+    <ClCompile Include="..\..\src\ssuds\ordered_setTests.cpp" />
     <ClCompile Include="..\..\src\stack_tests.cpp" />
   </ItemGroup>
   <ItemGroup>

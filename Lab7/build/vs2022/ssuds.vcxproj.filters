@@ -39,6 +39,9 @@
     <ClCompile Include="..\..\src\stack_tests.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\src\ssuds\ordered_setTests.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\include\ssuds\array_list.h">
