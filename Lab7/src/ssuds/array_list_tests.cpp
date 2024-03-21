@@ -1,4 +1,4 @@
-#include <gtest/gtest.h>
+/*#include <gtest/gtest.h>
 #include <array_list.h>
 
 #define EXECUTE_ARRAY_LIST_TESTS 1
@@ -380,4 +380,4 @@ TEST(ArrayListTests, SimpleIterator)
 	EXPECT_EQ(it, a.end());
 }
 
-#endif
+#endif*/

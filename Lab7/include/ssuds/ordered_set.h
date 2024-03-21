@@ -16,7 +16,7 @@ namespace ssuds
             Node* left;
             Node* right;
 
-            Node(const T& value) : value(val), left(nullptr), right(nullptr) {}
+            Node(const T& val) : value(val), left(nullptr), right(nullptr) {}
         };
 
         Node* root;

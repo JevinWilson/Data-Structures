@@ -1,5 +1,5 @@
-#define DO_STACK_QUEUE_UNIT_TESTS 0
-#if DO_STACK_QUEUE_UNIT_TESTS
+#define DO_STACK_QUEUE_UNIT_TESTS 1
+#if DO_STACK_QUEUE_UNIT_TESTS 1
 #include <gtest/gtest.h>
 #else
 #include <SFML/Graphics.hpp>
