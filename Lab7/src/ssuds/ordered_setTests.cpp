@@ -22,8 +22,9 @@ TEST(OrderedSetTest, TraversalTest) {
     std::vector<int> result = set.traversal();
     ASSERT_EQ(expected, result);
 }
-/*// still figuring out how to do this one
+/* don't forget to implement this
 TEST(OrderedSetTest, RebalanceTest) {
+    ssuds::OrderedSet<int> set;
 
 }*/
 

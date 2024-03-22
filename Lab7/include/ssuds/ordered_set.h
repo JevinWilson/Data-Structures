@@ -96,6 +96,45 @@ namespace ssuds
                 return containsRec(node->right, val);
             }
         }
+
+        Node* findMinimum(Node* node) const {
+            Node* current = node;
+            while (current && current->left != nullptr) {
+                current = current->left;
+            }
+            return current;
+        }
+        Node* removeRec(Node* node, const T& val, bool &removed) {
+            if (node == nullptr) {
+                return nullptr;
+            }
+            
+            if (val < node->value) {
+                node->left = removeRec(node->left, val, removed);
+            }
+            else if (val > node->value) {
+                node->right = removeRec(node->right, val, removed);
+            }
+            else {
+                if (node->left == nullptr) {
+                    Node* temp = node->right;
+                    delete node;
+                    removed = true;
+                    return temp;
+                }
+                else if (node->right == nullptr) {
+                    Node* temp = node->left;
+                    delete node;
+                    removed = true;
+                    return temp;
+                }
+
+                Node* temp = findMinimum(node->right);
+                node->value = temp->value;
+                node->right = removeRec(node->right, temp->value, removed);
+            }
+            return node;
+        }
     
     public:
         OrderedSet() : root(nullptr) {
@@ -134,6 +173,12 @@ namespace ssuds
 
         int get_height() const {
             return get_heightRec(root);
+        }
+
+        bool erase(const T& val) {
+            bool removed = false;
+            root = removeRec(root, val, removed);
+            return removed;
         }
     };
 }
