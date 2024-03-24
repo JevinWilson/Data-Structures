@@ -7,9 +7,9 @@ C:\Users\jaw06\Desktop\DS Assignments\Lab7\include\ssuds\ordered_set.h(48,64): w
   	see reference to class template instantiation 'ssuds::OrderedSet<int>' being compiled
   	C:\Users\jaw06\Desktop\DS Assignments\Lab7\include\ssuds\ordered_set.h(45,15):
   	while compiling class template member function 'ssuds::OrderedSet<int>::Node *ssuds::OrderedSet<int>::rebalanceRec(ssuds::OrderedSet<int>::Node *)'
-  		C:\Users\jaw06\Desktop\DS Assignments\Lab7\include\ssuds\ordered_set.h(120,18):
+  		C:\Users\jaw06\Desktop\DS Assignments\Lab7\include\ssuds\ordered_set.h(159,18):
   		see the first reference to 'ssuds::OrderedSet<int>::rebalanceRec' in 'ssuds::OrderedSet<int>::rebalance'
-  		C:\Users\jaw06\Desktop\DS Assignments\Lab7\src\ssuds\ordered_setTests.cpp(56,18):
-  		see the first reference to 'ssuds::OrderedSet<int>::rebalance' in 'OrderedSetTest_Get_heightTest_Test::TestBody'
+  		C:\Users\jaw06\Desktop\DS Assignments\Lab7\src\ssuds\ordered_setTests.cpp(37,18):
+  		see the first reference to 'ssuds::OrderedSet<int>::rebalance' in 'OrderedSetTest_RebalanceTest_Test::TestBody'
   
   ssuds.vcxproj -> C:\Users\jaw06\Desktop\DS Assignments\Lab7\bin\vs2022\Debug\ssuds_d.exe
