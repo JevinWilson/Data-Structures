@@ -1,13 +1,13 @@
 ﻿  ordered_setTests.cpp
-C:\Users\jaw06\Desktop\DS Assignments\Lab7\include\ssuds\ordered_set.h(48,64): warning C4267: 'argument': conversion from 'size_t' to 'int', possible loss of data
+C:\Users\jaw06\Desktop\DS Assignments\Lab7\include\ssuds\ordered_set.h(49,64): warning C4267: 'argument': conversion from 'size_t' to 'int', possible loss of data
   (compiling source file '../../src/ssuds/ordered_setTests.cpp')
-  C:\Users\jaw06\Desktop\DS Assignments\Lab7\include\ssuds\ordered_set.h(48,64):
+  C:\Users\jaw06\Desktop\DS Assignments\Lab7\include\ssuds\ordered_set.h(49,64):
   the template instantiation context (the oldest one first) is
   	C:\Users\jaw06\Desktop\DS Assignments\Lab7\src\ssuds\ordered_setTests.cpp(5,28):
   	see reference to class template instantiation 'ssuds::OrderedSet<int>' being compiled
-  	C:\Users\jaw06\Desktop\DS Assignments\Lab7\include\ssuds\ordered_set.h(45,15):
+  	C:\Users\jaw06\Desktop\DS Assignments\Lab7\include\ssuds\ordered_set.h(46,15):
   	while compiling class template member function 'ssuds::OrderedSet<int>::Node *ssuds::OrderedSet<int>::rebalanceRec(ssuds::OrderedSet<int>::Node *)'
-  		C:\Users\jaw06\Desktop\DS Assignments\Lab7\include\ssuds\ordered_set.h(159,18):
+  		C:\Users\jaw06\Desktop\DS Assignments\Lab7\include\ssuds\ordered_set.h(160,18):
   		see the first reference to 'ssuds::OrderedSet<int>::rebalanceRec' in 'ssuds::OrderedSet<int>::rebalance'
   		C:\Users\jaw06\Desktop\DS Assignments\Lab7\src\ssuds\ordered_setTests.cpp(37,18):
   		see the first reference to 'ssuds::OrderedSet<int>::rebalance' in 'OrderedSetTest_RebalanceTest_Test::TestBody'

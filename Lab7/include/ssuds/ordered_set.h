@@ -2,6 +2,7 @@
 
 #include <iostream>
 #include <vector>
+#include <stack.h>
 
 namespace ssuds 
 {
@@ -180,5 +181,41 @@ namespace ssuds
             root = removeRec(root, val, removed);
             return removed;
         }
+
+        class Iterator 
+        {
+        private:
+            ssuds::Stack<Node*> stack;
+            Node* currentNode;
+
+            void pushLeft(Node* node) {
+                while (node != nullptr) {
+                    stack.push(node);
+                    node = node->left;
+                }
+            }
+        
+        public:
+            Iterator(Node* root) : currentNode(root) {
+                pushLeft(root);
+            }
+
+            bool outOfRange() {
+                return !stack.empty();
+            }
+
+            T next() {
+                if (!outOfRange()) 
+                    throw std::out_of_range("Out of elments");
+                
+                Node* node = stack.top();
+                stack.pop();
+                T value = node->value;
+                if (node->right != nullptr) {
+                    pushLeft(node->right);
+                }
+                return value;
+            }
+        };
     };
 }
