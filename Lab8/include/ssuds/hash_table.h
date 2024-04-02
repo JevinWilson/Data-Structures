@@ -77,7 +77,22 @@ namespace ssuds
 		}
 
 		bool contains(const K& key) const {
-			// implement
+			int index = hash(key) % capacity;
+			int originalIndex = index;
+			bool found = false;
+
+			do {
+				if (!array[index].used) {
+					break;
+				}
+				else if (array[index].used && array[index].key == key) {
+					found = true; 
+					break;
+				}
+
+				index  = (index + 1) % capacity;
+			}
+			return found;
 		}
 
 		void remove(const K& key) const {
