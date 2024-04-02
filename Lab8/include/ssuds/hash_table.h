@@ -47,7 +47,33 @@ namespace ssuds
 		}
 
 		V& operator[](const K& key) const {
-			// implement
+			int index = hash(key) % capacity;
+			int originalIndex = index;
+			bool found = false;
+
+			do {
+				if (!array[index].used) {
+					break;
+				}
+				else if (array[index].used && array[index].key == key) {
+					found = true;
+					break;
+				}
+				index = (index + 1) % capacity;				
+			}
+			while (index != originalIndex);
+
+			if (!found) {
+				if (static_cast<float>(size + 1) / capacity > loadFactor) {
+					grow();
+					return this -> operator[](key);
+				}
+				array[index] = Pair(key, V{});
+				array[index].used = true;
+				size++;
+			}
+			
+			return array[index].value;
 		}
 
 		bool contains(const K& key) const {
