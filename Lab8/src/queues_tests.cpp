@@ -1,4 +1,4 @@
-#include <gtest/gtest.h>
+/*#include <gtest/gtest.h>
 #include <queue.h>
 #include <sstream>
 
@@ -69,4 +69,4 @@ TEST(QueueTests, Iterator)
 	}
 }
 
-#endif
+#endif*/

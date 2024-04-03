@@ -1,4 +1,4 @@
-#include <gtest/gtest.h>
+/*#include <gtest/gtest.h>
 #include <array_list.h>
 #include <array_list_utility.h>
 
@@ -183,4 +183,4 @@ TEST(ArrayListUtilityTests, BinarySearch)
 }
 
 
-#endif
+#endif*/

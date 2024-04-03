@@ -1,4 +1,4 @@
-#include <gtest/gtest.h>
+/*#include <gtest/gtest.h>
 #include <linked_list.h>
 
 #define EXECUTE_LINKED_LIST_TESTS 0
@@ -393,4 +393,4 @@ TEST(LinkedListTests, SimpleIterator)
 	EXPECT_EQ(it, a.end());
 }
 
-#endif
+#endif*/

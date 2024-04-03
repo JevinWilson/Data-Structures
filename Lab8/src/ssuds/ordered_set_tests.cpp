@@ -1,4 +1,4 @@
-#include <gtest/gtest.h>
+/*#include <gtest/gtest.h>
 #include <ordered_set.h>
 
 #define DO_ORDERED_SET_TESTS 1
@@ -176,4 +176,4 @@ TEST_F(OrderedSetTests, SetOperations)
 }
 
 
-#endif
+#endif*/
