@@ -76,24 +76,51 @@ namespace ssuds
 			return array[index].value;
 		}
 
-		bool contains(const K& key) const {
-			int index = hash(key) % capacity;
-			int originalIndex = index;
-			bool found = false;
+		class Iterator 
+		{
+		private:
+			const HashMap& hashmap;
+			int current;
 
-			do {
-				if (!array[index].used) {
-					break;
-				}
-				else if (array[index].used && array[index].key == key) {
-					found = true; 
-					break;
-				}
+			Iterator(const HashMap& hashmap, int start) : hashmap(hashmap), current(start) {}
 
-				index  = (index + 1) % capacity;
+			void nextPos() {
+				while (current < hashmap.capacity && !hashmap.array[current].used) {
+					current++;
+				}
 			}
-			return found;
-		}
+
+		public:
+			friend class HashMap;
+
+			const Pair& operator*() const {
+				if (current >= 0 && current < hashmap.capacity && hashmap.array[current].used) {
+					return hashmap.array[current];
+				}
+				throw std::out_of_range("Iterator is out of range");
+			}
+
+			Iterator& operator++() {
+				current++;
+				nextPos();
+				return *this;
+			}
+
+			Iterator operator++(int) {
+				Iterator temp = *this;
+				(*this)++;
+				return temp;
+			}
+
+			bool operator==(const Iterator& other) const {
+				return &hashmap == &other.hashmap && current == other.current;
+			}
+
+			bool operator!=(const Iterator& other) const {
+				return !(*this == other);
+			}
+
+		};
 
 		void remove(const K& key) const {
 			// implement
