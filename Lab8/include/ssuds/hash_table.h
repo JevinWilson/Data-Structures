@@ -1,5 +1,7 @@
 #pragma once
 
+#include <iostream>
+
 namespace ssuds
 {
 	template <typename K, typename V>
@@ -149,11 +151,45 @@ namespace ssuds
 		}
 
 		void remove(const K& key) const {
-			// implement
+			int index = hash(key) % capacity;
+			int originalIndex = index;
+			bool found = false;
+
+			do {
+				if (!array[index].used) {
+					break;
+				}
+				else if (array[index].used && array[index].key == key) {
+					found = true;
+					break;
+				}
+				index = (index + 1) % capacity;
+			}
+			while (index != originalIndex);
+
+			if (found) {
+				array[index].used = false;
+				size--;
+				return true;
+			}
+			// nothing found
+			return false;
 		}
 
-		friend std::ostream& operator<<(std::ostream& os, const HashMap& hashmap) {
-			// implement
+		friend std::ostream& operator<<(std::ostream& os, const HashMap<K, V>& hashmap) {
+			os << "{";
+			bool first = true;
+			for (int i = 0; i < hashmap.capacity; i++) {
+				if (hashmap.array[i].used) {
+					if (!first) {
+						os << ", ";
+					}
+					os << hashmap.array[i].key << ": " << hashmap.array[i].value;
+					first = false;
+				}
+			}
+			os << "}";
+			return os;
 		}
 	};
 }
