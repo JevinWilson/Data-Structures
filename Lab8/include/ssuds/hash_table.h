@@ -23,6 +23,7 @@ namespace ssuds
 		int size;
 		float loadFactor;
 
+		/// @brief double the capacity only when full
 		void grow() {
 			int newCapacity = capacity * 2;
 			Pair* newArray = new Pair[newCapacity];
@@ -42,14 +43,19 @@ namespace ssuds
 		}
 
 	public: 
+		/// @brief constuctor
 		HashMap() : capacity(10), size(0), loadFactor(0.75) {
 			array = new Pair[capacity];
 		}
 
+		/// @brief destructor
 		~HashMap() {
 			delete[] array;
 		}
 
+		/// @brief gives access to the value associated with the given key
+		/// @param key the value to be accessed or inserted
+		/// @return a reference to the value associated with the given key
 		V& operator[](const K& key) {
 			int index = std::hash<K>{}(key) % capacity;
 			int originalIndex = index;
@@ -87,7 +93,9 @@ namespace ssuds
 			return array[index].value; 
 		}
 
-		// needed to check remove function
+		/// @brief checks if the hash contains a specific key
+		/// @param key the key to search for
+		/// @return true if the key is found and false if it wasn't
 		bool contains(const K& key) const {
 			int index = std::hash<K>{}(key) % capacity; 
 			int originalIndex = index;
@@ -105,7 +113,7 @@ namespace ssuds
 
 			return found;
 		}
-
+		
 		class Iterator 
 		{
 		private:
@@ -162,6 +170,9 @@ namespace ssuds
 			return Iterator(*this, capacity);
 		}
 
+		/// @brief search for a specific key and provides a way to access the key value pair
+		/// @param key the key to search for
+		/// @return an iterator to the key value pair if found, if not it iterates to the end
 		Iterator find(const K& key) const {
 			int index = std::hash<K>{}(key) % capacity;
 			int originalIndex = index;
@@ -180,6 +191,9 @@ namespace ssuds
 			return end();
 		}
 
+		/// @brief remove a key value pair based on the key
+		/// @param key the key of the key value pair to be removed
+		/// @return true if found and removed and false if not
 		bool remove(const K& key) {
 			int index = std::hash<K>{}(key) % capacity;
 			int originalIndex = index;
@@ -206,6 +220,10 @@ namespace ssuds
 			return false;
 		}
 
+		/// @brief overload << operator to print the HashMap
+		/// @param os reference to output stream where the contents will be sent
+		/// @param hashmap reference to the HashMap being printed
+		/// @return reference to output stream
 		friend std::ostream& operator<<(std::ostream& os, const HashMap<K, V>& hashmap) {
 			os << "{";
 			bool first = true;
