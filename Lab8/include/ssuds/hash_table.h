@@ -132,6 +132,22 @@ namespace ssuds
 			return Iterator(*this, capacity);
 		}
 
+		Iterator find(const K& key) const {
+			int index = hash(key) % capacity;
+			int originalIndex = index;
+
+			do {
+				if (!array[index].used) {
+					break;
+				}
+				else if (array[index].used && array[index].key == key) {
+					return Iterator(*this, index);
+				}
+				index = (index + 1) % capacity;
+			}
+			return end;
+		}
+
 		void remove(const K& key) const {
 			// implement
 		}
