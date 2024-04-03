@@ -1,6 +1,7 @@
 #pragma once
 
 #include <iostream>
+#include <functional>
 
 namespace ssuds
 {
@@ -12,7 +13,8 @@ namespace ssuds
 			K key;
 			V value;
 			bool used = false;
-
+			
+			Pair() : key(K()), value(V()), used(false) {}
 			Pair(K k, V v) : key(k), value(v), used(true) {}
 		};
 
@@ -27,7 +29,7 @@ namespace ssuds
 
 			for (int i = 0; i < capacity; i++) {
 				if (array[i].used) {
-					int index = hash(array[i].key) % newCapacity;
+					int index = std::hash<K>{}(array[i].key) % newCapacity;
 
 					newArray[index] = array[i];
 					newArray[index].used = true;
@@ -48,8 +50,8 @@ namespace ssuds
 			delete[] array;
 		}
 
-		V& operator[](const K& key) const {
-			int index = hash(key) % capacity;
+		V& operator[](const K& key) {
+			int index = std::hash<K>{}(key) % capacity;
 			int originalIndex = index;
 			bool found = false;
 
@@ -61,22 +63,30 @@ namespace ssuds
 					found = true;
 					break;
 				}
-				index = (index + 1) % capacity;				
-			}
-			while (index != originalIndex);
+				index = (index + 1) % capacity;                
+			} while (index != originalIndex);
 
 			if (!found) {
 				if (static_cast<float>(size + 1) / capacity > loadFactor) {
 					grow();
-					return this -> operator[](key);
+					index = std::hash<K>{}(key) % capacity;
 				}
-				array[index] = Pair(key, V{});
-				array[index].used = true;
-				size++;
+				
+				index = std::hash<K>{}(key) % capacity; 
+				do {
+					if (!array[index].used) {
+						array[index] = Pair(key, V{});
+						array[index].used = true;
+						size++;
+						break;
+					}
+					index = (index + 1) % capacity;
+				} while (index != originalIndex);
 			}
-			
-			return array[index].value;
+
+			return array[index].value; 
 		}
+
 
 		class Iterator 
 		{
@@ -135,7 +145,7 @@ namespace ssuds
 		}
 
 		Iterator find(const K& key) const {
-			int index = hash(key) % capacity;
+			int index = std::hash<K>{}(key) % capacity;
 			int originalIndex = index;
 
 			do {
@@ -147,11 +157,13 @@ namespace ssuds
 				}
 				index = (index + 1) % capacity;
 			}
-			return end;
+			while (index != originalIndex);
+
+			return end();
 		}
 
-		void remove(const K& key) const {
-			int index = hash(key) % capacity;
+		void remove(const K& key) {
+			int index = std::hash<K>{}(key) % capacity;
 			int originalIndex = index;
 			bool found = false;
 
