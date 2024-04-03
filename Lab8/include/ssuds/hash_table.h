@@ -122,6 +122,16 @@ namespace ssuds
 
 		};
 
+		Iterator begin() const {
+			Iterator it(*this, 0);
+			it.nextPos();
+			return it;
+		}
+
+		Iterator end() const {
+			return Iterator(*this, capacity);
+		}
+
 		void remove(const K& key) const {
 			// implement
 		}
