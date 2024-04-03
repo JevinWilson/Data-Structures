@@ -17,6 +17,7 @@
     <ClCompile Include="..\..\src\queues_tests.cpp" />
     <ClCompile Include="..\..\src\ssuds\array_list_tests.cpp" />
     <ClCompile Include="..\..\src\ssuds\array_list_utility_tests.cpp" />
+    <ClCompile Include="..\..\src\ssuds\hash_table_tests.cpp" />
     <ClCompile Include="..\..\src\ssuds\linked_list_tests.cpp" />
     <ClCompile Include="..\..\src\ssuds\ordered_set_tests.cpp" />
     <ClCompile Include="..\..\src\stack_tests.cpp" />

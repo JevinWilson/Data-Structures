@@ -87,6 +87,24 @@ namespace ssuds
 			return array[index].value; 
 		}
 
+		// needed to check remove function
+		bool contains(const K& key) const {
+			int index = std::hash<K>{}(key) % capacity; 
+			int originalIndex = index;
+			bool found = false;
+
+			do {
+				if (!array[index].used) { 
+					break;
+				} else if (array[index].used && array[index].key == key) { 
+					found = true;
+					break;
+				}
+				index = (index + 1) % capacity; 
+			} while (index != originalIndex);
+
+			return found;
+		}
 
 		class Iterator 
 		{
@@ -162,7 +180,7 @@ namespace ssuds
 			return end();
 		}
 
-		void remove(const K& key) {
+		bool remove(const K& key) {
 			int index = std::hash<K>{}(key) % capacity;
 			int originalIndex = index;
 			bool found = false;
