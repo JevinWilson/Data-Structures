@@ -74,5 +74,8 @@
     <ClInclude Include="..\..\include\ssuds\hash_table.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\include\ssuds\graph.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

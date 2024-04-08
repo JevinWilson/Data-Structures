@@ -27,6 +27,7 @@
     <ClInclude Include="..\..\include\misc\text_circle.h" />
     <ClInclude Include="..\..\include\ssuds\array_list.h" />
     <ClInclude Include="..\..\include\ssuds\array_list_utility.h" />
+    <ClInclude Include="..\..\include\ssuds\graph.h" />
     <ClInclude Include="..\..\include\ssuds\hash_table.h" />
     <ClInclude Include="..\..\include\ssuds\linked_list.h" />
     <ClInclude Include="..\..\include\ssuds\ordered_set.h" />
