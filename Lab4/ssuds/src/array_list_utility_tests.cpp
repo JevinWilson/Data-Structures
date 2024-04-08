@@ -111,3 +111,29 @@ TEST_F(ArrayListUtilityTest, insertion_sortTest) {
     int index = ssuds::ArrayListUtility::binary_search(list, 2, ssuds::sortOrder::Ascending, operation_count);
     EXPECT_EQ(1, index);
 }*/
+
+TEST_F(ArrayListUtilityTest, MergeSortTest) {
+    // Populate the list with unsorted numbers
+    list.append(5);
+    list.append(2);
+    list.append(8);
+    list.append(3);
+    list.append(1);
+
+    // Expected sorted list for comparison
+    ssuds::ArrayList<int> expected_list;
+    expected_list.append(1);
+    expected_list.append(2);
+    expected_list.append(3);
+    expected_list.append(5);
+    expected_list.append(8);
+
+    // Perform the merge sort
+    int operation_count = 0; // To comply with the function signature
+    ssuds::ArrayListUtility::merge_sort(list, 0, list.size() - 1, operation_count);
+
+    // Verify that the list is sorted correctly
+    for (size_t i = 0; i < list.size(); i++) {
+        EXPECT_EQ(expected_list[i], list[i]);
+    }
+}
