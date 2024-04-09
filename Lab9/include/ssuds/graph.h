@@ -20,14 +20,14 @@ namespace ssuds
         }
 
         bool contains_node(const N& node) {
-            return mData.find(node) != mData.end()
+            return mData.find(node) != mData.end();
         }
 
         void add_edge(const N& start, const N& dest, const E& val) {
-            if (contains_node(start) || !contains_node(dest)) {
+            if (!contains_node(start) || !contains_node(dest)) {
                 throw std::invalid_argument("One or both nodes do not exist in the graph");
             }
-            mData[start].push_back(std::make_pair(dest,val));
+            mData[start].push_back(std::make_pair(dest, val));
         }
 
         bool contains_edge(const N& start, const N& dest) {
@@ -42,25 +42,34 @@ namespace ssuds
         }
 
         void remove_node(const N& node) {
-            if (!contains_node(node)) {
-                return;
-            }
+            if (!contains_node(node)) return;
+
             mData.erase(node);
 
             for (auto& pair : mData) {
-                auto& edge = pair.second;
-                edges.erase(std::remove_if(edges.begin(), edges.end(), [node](const std::pair<N, E>& edge) {
-                    return edge.first == node;
-                }), edges.end());
+                auto it = pair.second.begin();
+                while (it != pair.second.end()) {
+                    if (it->first == node) {
+                        it = pair.second.erase(it);
+                    } else {
+                        ++it;
+                    }
+                }
             }
         }
 
         void remove_edge(const N& start, const N& dest) {
             if (contains_node(start)) {
                 auto& edges = mData[start];
-                edges.erase(std::remove_if(edges.begin(), edges.end(), [dest](const std::pair<N, E>& pair) {
-                    return pair.first == dest;
-                }), edges.end());
+                auto it = edges.begin();
+                while (it != edges.end()) {
+                    if (it->first == dest) {
+                        it = edges.erase(it);
+                    } 
+                    else {
+                        ++it;
+                    }
+                }
             }
         }
 
@@ -74,15 +83,16 @@ namespace ssuds
                     return pair.second;
                 }
             }
+            throw std::runtime_error("Edge does not exist");
         }
 
         friend std::ostream& operator<<(std::ostream& os, const Graph& graph) {
             for (const auto& pair : graph.mData) {
-                os << node.first << " |";
-                for (const auto& edge : node.second) {
-                    os << " )" << edge.first << ":" << edge.second << ")"
+                os << pair.first << " |";
+                for (const auto& edge : pair.second) {
+                    os << " (" << edge.first << ":" << edge.second << ")";
                 }
-                os << std::endl
+                os << std::endl;
             }
             return os;
         }
