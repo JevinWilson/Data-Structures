@@ -1,37 +1,52 @@
-﻿  main.cpp
-C:\Users\jaw06\Desktop\DS Assignments\Lab9\src\main.cpp(23,30): warning C4305: 'argument': truncation from 'double' to 'const E'
-C:\Users\jaw06\Desktop\DS Assignments\Lab9\src\main.cpp(23,30): warning C4305:         with
-C:\Users\jaw06\Desktop\DS Assignments\Lab9\src\main.cpp(23,30): warning C4305:         [
-C:\Users\jaw06\Desktop\DS Assignments\Lab9\src\main.cpp(23,30): warning C4305:             E=float
-C:\Users\jaw06\Desktop\DS Assignments\Lab9\src\main.cpp(23,30): warning C4305:         ]
-C:\Users\jaw06\Desktop\DS Assignments\Lab9\src\main.cpp(24,30): warning C4305: 'argument': truncation from 'double' to 'const E'
-C:\Users\jaw06\Desktop\DS Assignments\Lab9\src\main.cpp(24,30): warning C4305:         with
-C:\Users\jaw06\Desktop\DS Assignments\Lab9\src\main.cpp(24,30): warning C4305:         [
-C:\Users\jaw06\Desktop\DS Assignments\Lab9\src\main.cpp(24,30): warning C4305:             E=float
-C:\Users\jaw06\Desktop\DS Assignments\Lab9\src\main.cpp(24,30): warning C4305:         ]
-C:\Users\jaw06\Desktop\DS Assignments\Lab9\src\main.cpp(25,30): warning C4305: 'argument': truncation from 'double' to 'const E'
-C:\Users\jaw06\Desktop\DS Assignments\Lab9\src\main.cpp(25,30): warning C4305:         with
-C:\Users\jaw06\Desktop\DS Assignments\Lab9\src\main.cpp(25,30): warning C4305:         [
-C:\Users\jaw06\Desktop\DS Assignments\Lab9\src\main.cpp(25,30): warning C4305:             E=float
-C:\Users\jaw06\Desktop\DS Assignments\Lab9\src\main.cpp(25,30): warning C4305:         ]
-C:\Users\jaw06\Desktop\DS Assignments\Lab9\src\main.cpp(27,30): warning C4305: 'argument': truncation from 'double' to 'const E'
-C:\Users\jaw06\Desktop\DS Assignments\Lab9\src\main.cpp(27,30): warning C4305:         with
-C:\Users\jaw06\Desktop\DS Assignments\Lab9\src\main.cpp(27,30): warning C4305:         [
-C:\Users\jaw06\Desktop\DS Assignments\Lab9\src\main.cpp(27,30): warning C4305:             E=float
-C:\Users\jaw06\Desktop\DS Assignments\Lab9\src\main.cpp(27,30): warning C4305:         ]
-C:\Users\jaw06\Desktop\DS Assignments\Lab9\src\main.cpp(29,30): warning C4305: 'argument': truncation from 'double' to 'const E'
-C:\Users\jaw06\Desktop\DS Assignments\Lab9\src\main.cpp(29,30): warning C4305:         with
-C:\Users\jaw06\Desktop\DS Assignments\Lab9\src\main.cpp(29,30): warning C4305:         [
-C:\Users\jaw06\Desktop\DS Assignments\Lab9\src\main.cpp(29,30): warning C4305:             E=float
-C:\Users\jaw06\Desktop\DS Assignments\Lab9\src\main.cpp(29,30): warning C4305:         ]
-C:\Users\jaw06\Desktop\DS Assignments\Lab9\src\main.cpp(30,30): warning C4305: 'argument': truncation from 'double' to 'const E'
-C:\Users\jaw06\Desktop\DS Assignments\Lab9\src\main.cpp(30,30): warning C4305:         with
-C:\Users\jaw06\Desktop\DS Assignments\Lab9\src\main.cpp(30,30): warning C4305:         [
-C:\Users\jaw06\Desktop\DS Assignments\Lab9\src\main.cpp(30,30): warning C4305:             E=float
-C:\Users\jaw06\Desktop\DS Assignments\Lab9\src\main.cpp(30,30): warning C4305:         ]
-C:\Users\jaw06\Desktop\DS Assignments\Lab9\src\main.cpp(31,30): warning C4305: 'argument': truncation from 'double' to 'const E'
-C:\Users\jaw06\Desktop\DS Assignments\Lab9\src\main.cpp(31,30): warning C4305:         with
-C:\Users\jaw06\Desktop\DS Assignments\Lab9\src\main.cpp(31,30): warning C4305:         [
-C:\Users\jaw06\Desktop\DS Assignments\Lab9\src\main.cpp(31,30): warning C4305:             E=float
-C:\Users\jaw06\Desktop\DS Assignments\Lab9\src\main.cpp(31,30): warning C4305:         ]
+﻿  graph_tests.cpp
+C:\Users\jaw06\Desktop\DS Assignments\Lab9\src\ssuds\graph_tests.cpp(23,30): warning C4305: 'argument': truncation from 'double' to 'const E'
+C:\Users\jaw06\Desktop\DS Assignments\Lab9\src\ssuds\graph_tests.cpp(23,30): warning C4305:         with
+C:\Users\jaw06\Desktop\DS Assignments\Lab9\src\ssuds\graph_tests.cpp(23,30): warning C4305:         [
+C:\Users\jaw06\Desktop\DS Assignments\Lab9\src\ssuds\graph_tests.cpp(23,30): warning C4305:             E=float
+C:\Users\jaw06\Desktop\DS Assignments\Lab9\src\ssuds\graph_tests.cpp(23,30): warning C4305:         ]
+C:\Users\jaw06\Desktop\DS Assignments\Lab9\src\ssuds\graph_tests.cpp(24,30): warning C4305: 'argument': truncation from 'double' to 'const E'
+C:\Users\jaw06\Desktop\DS Assignments\Lab9\src\ssuds\graph_tests.cpp(24,30): warning C4305:         with
+C:\Users\jaw06\Desktop\DS Assignments\Lab9\src\ssuds\graph_tests.cpp(24,30): warning C4305:         [
+C:\Users\jaw06\Desktop\DS Assignments\Lab9\src\ssuds\graph_tests.cpp(24,30): warning C4305:             E=float
+C:\Users\jaw06\Desktop\DS Assignments\Lab9\src\ssuds\graph_tests.cpp(24,30): warning C4305:         ]
+C:\Users\jaw06\Desktop\DS Assignments\Lab9\src\ssuds\graph_tests.cpp(25,30): warning C4305: 'argument': truncation from 'double' to 'const E'
+C:\Users\jaw06\Desktop\DS Assignments\Lab9\src\ssuds\graph_tests.cpp(25,30): warning C4305:         with
+C:\Users\jaw06\Desktop\DS Assignments\Lab9\src\ssuds\graph_tests.cpp(25,30): warning C4305:         [
+C:\Users\jaw06\Desktop\DS Assignments\Lab9\src\ssuds\graph_tests.cpp(25,30): warning C4305:             E=float
+C:\Users\jaw06\Desktop\DS Assignments\Lab9\src\ssuds\graph_tests.cpp(25,30): warning C4305:         ]
+C:\Users\jaw06\Desktop\DS Assignments\Lab9\src\ssuds\graph_tests.cpp(49,30): warning C4305: 'argument': truncation from 'double' to 'const E'
+C:\Users\jaw06\Desktop\DS Assignments\Lab9\src\ssuds\graph_tests.cpp(49,30): warning C4305:         with
+C:\Users\jaw06\Desktop\DS Assignments\Lab9\src\ssuds\graph_tests.cpp(49,30): warning C4305:         [
+C:\Users\jaw06\Desktop\DS Assignments\Lab9\src\ssuds\graph_tests.cpp(49,30): warning C4305:             E=float
+C:\Users\jaw06\Desktop\DS Assignments\Lab9\src\ssuds\graph_tests.cpp(49,30): warning C4305:         ]
+C:\Users\jaw06\Desktop\DS Assignments\Lab9\src\ssuds\graph_tests.cpp(50,30): warning C4305: 'argument': truncation from 'double' to 'const E'
+C:\Users\jaw06\Desktop\DS Assignments\Lab9\src\ssuds\graph_tests.cpp(50,30): warning C4305:         with
+C:\Users\jaw06\Desktop\DS Assignments\Lab9\src\ssuds\graph_tests.cpp(50,30): warning C4305:         [
+C:\Users\jaw06\Desktop\DS Assignments\Lab9\src\ssuds\graph_tests.cpp(50,30): warning C4305:             E=float
+C:\Users\jaw06\Desktop\DS Assignments\Lab9\src\ssuds\graph_tests.cpp(50,30): warning C4305:         ]
+C:\Users\jaw06\Desktop\DS Assignments\Lab9\src\ssuds\graph_tests.cpp(51,30): warning C4305: 'argument': truncation from 'double' to 'const E'
+C:\Users\jaw06\Desktop\DS Assignments\Lab9\src\ssuds\graph_tests.cpp(51,30): warning C4305:         with
+C:\Users\jaw06\Desktop\DS Assignments\Lab9\src\ssuds\graph_tests.cpp(51,30): warning C4305:         [
+C:\Users\jaw06\Desktop\DS Assignments\Lab9\src\ssuds\graph_tests.cpp(51,30): warning C4305:             E=float
+C:\Users\jaw06\Desktop\DS Assignments\Lab9\src\ssuds\graph_tests.cpp(51,30): warning C4305:         ]
+C:\Users\jaw06\Desktop\DS Assignments\Lab9\src\ssuds\graph_tests.cpp(63,30): warning C4305: 'argument': truncation from 'double' to 'const E'
+C:\Users\jaw06\Desktop\DS Assignments\Lab9\src\ssuds\graph_tests.cpp(63,30): warning C4305:         with
+C:\Users\jaw06\Desktop\DS Assignments\Lab9\src\ssuds\graph_tests.cpp(63,30): warning C4305:         [
+C:\Users\jaw06\Desktop\DS Assignments\Lab9\src\ssuds\graph_tests.cpp(63,30): warning C4305:             E=float
+C:\Users\jaw06\Desktop\DS Assignments\Lab9\src\ssuds\graph_tests.cpp(63,30): warning C4305:         ]
+C:\Users\jaw06\Desktop\DS Assignments\Lab9\src\ssuds\graph_tests.cpp(64,30): warning C4305: 'argument': truncation from 'double' to 'const E'
+C:\Users\jaw06\Desktop\DS Assignments\Lab9\src\ssuds\graph_tests.cpp(64,30): warning C4305:         with
+C:\Users\jaw06\Desktop\DS Assignments\Lab9\src\ssuds\graph_tests.cpp(64,30): warning C4305:         [
+C:\Users\jaw06\Desktop\DS Assignments\Lab9\src\ssuds\graph_tests.cpp(64,30): warning C4305:             E=float
+C:\Users\jaw06\Desktop\DS Assignments\Lab9\src\ssuds\graph_tests.cpp(64,30): warning C4305:         ]
+C:\Users\jaw06\Desktop\DS Assignments\Lab9\src\ssuds\graph_tests.cpp(65,30): warning C4305: 'argument': truncation from 'double' to 'const E'
+C:\Users\jaw06\Desktop\DS Assignments\Lab9\src\ssuds\graph_tests.cpp(65,30): warning C4305:         with
+C:\Users\jaw06\Desktop\DS Assignments\Lab9\src\ssuds\graph_tests.cpp(65,30): warning C4305:         [
+C:\Users\jaw06\Desktop\DS Assignments\Lab9\src\ssuds\graph_tests.cpp(65,30): warning C4305:             E=float
+C:\Users\jaw06\Desktop\DS Assignments\Lab9\src\ssuds\graph_tests.cpp(65,30): warning C4305:         ]
+C:\Users\jaw06\Desktop\DS Assignments\Lab9\src\ssuds\graph_tests.cpp(67,5): warning C4305: 'argument': truncation from 'double' to 'RawType'
+C:\Users\jaw06\Desktop\DS Assignments\Lab9\src\ssuds\graph_tests.cpp(67,5): warning C4305:         with
+C:\Users\jaw06\Desktop\DS Assignments\Lab9\src\ssuds\graph_tests.cpp(67,5): warning C4305:         [
+C:\Users\jaw06\Desktop\DS Assignments\Lab9\src\ssuds\graph_tests.cpp(67,5): warning C4305:             RawType=float
+C:\Users\jaw06\Desktop\DS Assignments\Lab9\src\ssuds\graph_tests.cpp(67,5): warning C4305:         ]
   ssuds.vcxproj -> C:\Users\jaw06\Desktop\DS Assignments\Lab9\bin\vs2022\Debug\ssuds_d.exe

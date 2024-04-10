@@ -6,10 +6,10 @@ int main()
 {
     /*
     testing::InitGoogleTest();
-    return RUN_ALL_TESTS();
-    */
+    return RUN_ALL_TESTS();*/
+    
 
-    ssuds::Graph<std::string, float> graph;
+    /*ssuds::Graph<std::string, float> graph;
 
     graph.add_node("D");
     graph.add_node("A");
@@ -30,5 +30,8 @@ int main()
 
     std::cout << graph << std::endl;
 
-    return 0;    
+    return 0;*/
+
+    
+    
 }
