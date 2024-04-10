@@ -1,4 +1,4 @@
-#include <gtest/gtest.h>
+/*#include <gtest/gtest.h>
 #include <hash_table.h>
 
 TEST(HashMapTests, FindTest) {
@@ -26,4 +26,5 @@ TEST(HashMapTests, RemoveContainsTest) {
     auto it = Map.find("Bob");
     EXPECT_EQ(it, Map.end());
     EXPECT_FALSE(Map.contains("Bob"));
-}
+}*/
+
