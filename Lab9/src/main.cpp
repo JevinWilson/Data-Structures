@@ -1,6 +1,7 @@
 #include <gtest/gtest.h>
 #include <hash_table.h>
 #include <graph.h>
+#include <map_file.h>
 
 int main()
 {
@@ -31,7 +32,13 @@ int main()
     std::cout << graph << std::endl;
 
     return 0;*/
+    
+    ssuds::Graph<int, float> graph;
+    std::unordered_map<int, sf::Vector2f> positions;
+    std::unordered_map<int, sf::Color> colors;
 
-    
-    
+    loadGraphFromFile("../../../media/fonts/map.txt", graph, positions, colors);
+    displayGraph(graph, positions, colors);
+
+    return 0;
 }

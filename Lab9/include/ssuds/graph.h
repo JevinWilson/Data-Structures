@@ -3,6 +3,7 @@
 #include <iostream>
 #include <unordered_map>
 #include <vector>
+#include <tuple>
 
 namespace ssuds
 {
@@ -121,6 +122,29 @@ namespace ssuds
                 os << std::endl;
             }
             return os;
+        }
+
+        /// @brief gets all edges in graph
+        /// @return vector of all nodes
+        std::vector<N> get_all_nodes() const {
+            std::vector<N> nodes;
+            for (auto& pair : mData) {
+                nodes.push_back(pair.first);
+            }
+            return nodes;
+        }
+
+        /// @brief retieve all edges in graph
+        /// @return vector tuples of (start, end, edge_value)
+        std::vector<std::tuple<N, N, E>> get_all_edges() const {
+            std::vector<std::tuple<N, N, E>> edges;
+            for (auto& pair : mData) {
+                N start = pair.first;
+                for (auto & edge : pair.second) {
+                    edges.emplace_back(start, edge.first, edge.second);
+                }
+            }
+            return edges;
         }
     
     };

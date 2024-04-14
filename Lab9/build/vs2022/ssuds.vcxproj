@@ -24,6 +24,7 @@
     <ClInclude Include="..\..\include\ssuds\graph.h" />
     <ClInclude Include="..\..\include\ssuds\hash_table.h" />
     <ClInclude Include="..\..\include\ssuds\linked_list.h" />
+    <ClInclude Include="..\..\include\ssuds\map_file.h" />
     <ClInclude Include="..\..\include\ssuds\ordered_set.h" />
     <ClInclude Include="..\..\include\ssuds\queue.h" />
     <ClInclude Include="..\..\include\ssuds\stack.h" />
