@@ -4,7 +4,7 @@
 #include <text_circle.h>
 #include <Graph.h>
 
-// Load graph from a file
+// Load graph from file
 void loadGraphFromFile(const std::string& filename, ssuds::Graph<int, float>& graph, std::unordered_map<int, sf::Vector2f>& positions, std::unordered_map<int, sf::Color>& colors) {
     std::ifstream file(filename);
     if (!file.is_open()) {
@@ -21,7 +21,7 @@ void loadGraphFromFile(const std::string& filename, ssuds::Graph<int, float>& gr
             continue;
         }
 
-        iss.ignore(1); // Ignore colon after 'n' or 'e'
+        iss.ignore(1); 
 
         if (type == 'n') {
             int id, r, g, b, x, y;
@@ -59,11 +59,11 @@ void loadGraphFromFile(const std::string& filename, ssuds::Graph<int, float>& gr
 }
 
 
-// Display the graph using SFML and TextCircle 
+// display graph
 void displayGraph(const ssuds::Graph<int, float>& graph, const std::unordered_map<int, sf::Vector2f>& positions, const std::unordered_map<int, sf::Color>& colors) {
     sf::RenderWindow window(sf::VideoMode(800, 600), "Graph Display");
     sf::Font font;
-    if (!font.loadFromFile("../../../media/fonts/Lato/Lato-Bold.ttf")) { 
+    if (!font.loadFromFile("../../../media/fonts/Lato/Lato-Black.ttf")) { 
         std::cerr << "Could not load font\n";
         return;
     }
