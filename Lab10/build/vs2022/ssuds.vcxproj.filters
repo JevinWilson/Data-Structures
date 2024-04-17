@@ -69,7 +69,7 @@
     <ClCompile Include="..\..\src\ssuds\graph_tests.cpp">
       <Filter>Source Files\ssuds_testing</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\src\misc\graph_creator.cpp">
+    <ClCompile Include="..\..\src\misc\visual_graph.cpp">
       <Filter>Source Files\misc</Filter>
     </ClCompile>
   </ItemGroup>
@@ -110,7 +110,7 @@
     <ClInclude Include="..\..\include\ssuds\unordered_map.h">
       <Filter>Header Files\ssuds</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\include\misc\graph_creator.h">
+    <ClInclude Include="..\..\include\misc\visual_graph.h">
       <Filter>Header Files\misc</Filter>
     </ClInclude>
   </ItemGroup>

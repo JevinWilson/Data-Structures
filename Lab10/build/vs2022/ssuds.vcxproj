@@ -12,7 +12,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\src\main.cpp" />
-    <ClCompile Include="..\..\src\misc\graph_creator.cpp" />
+    <ClCompile Include="..\..\src\misc\visual_graph.cpp" />
     <ClCompile Include="..\..\src\misc\word_drawer.cpp" />
     <ClCompile Include="..\..\src\misc\word_reader.cpp" />
     <ClCompile Include="..\..\src\sf\text_circle.cpp" />
@@ -26,7 +26,7 @@
     <ClCompile Include="..\..\src\ssuds\unordered_map_tests.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\..\include\misc\graph_creator.h" />
+    <ClInclude Include="..\..\include\misc\visual_graph.h" />
     <ClInclude Include="..\..\include\misc\word_drawer.h" />
     <ClInclude Include="..\..\include\misc\word_reader.h" />
     <ClInclude Include="..\..\include\sf\graph.h" />
