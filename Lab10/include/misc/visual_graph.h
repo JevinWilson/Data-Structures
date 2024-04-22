@@ -35,8 +35,7 @@ namespace misc
 		ssuds::UnorderedMap<int, sf::TextCircle> mCircleData;
 
 		/// for bfs
-		int selectedNode = -1;
-
+		ssuds::ArrayList<int> selectedNode;
 
 	public:
 		/// <summary>
@@ -59,8 +58,10 @@ namespace misc
 		/// <returns></returns>
 		void load(const std::string& fname);
 
-		void handle_mouse_click(float x, float y);
+		ssuds::ArrayList<int> handle_mouse_click(const float X, const float Y, bool end=false);
 
-		void doBFS();
+		void bfs(ssuds::ArrayList<std::pair<int, int>>& traverseMap);
+
+		void dfs(ssuds::ArrayList<std::pair<int, int>>& traverseMap);
 	};
 }

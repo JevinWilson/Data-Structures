@@ -26,99 +26,51 @@ int main()
 
     misc::VisualGraph GC(circle_font, "../../../media/output.txt");
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-    int selectedNode = -1;
-=======
->>>>>>> parent of c22a569 (sort of working 2c)
-=======
->>>>>>> parent of c22a569 (sort of working 2c)
+    ssuds::ArrayList<int> selectedNodes;
 
-
-     while (window.isOpen())
+    while (window.isOpen())
     {
         sf::Event event;
         while (window.pollEvent(event))
         {
             if (event.type == sf::Event::Closed || 
                 (event.type == sf::Event::KeyPressed && event.key.code == sf::Keyboard::Escape))
+            {
                 window.close();
+            }
 
-<<<<<<< HEAD
-<<<<<<< HEAD
+            // Handle mouse click for node selection and perform BFS
             if (event.type == sf::Event::MouseButtonPressed && event.mouseButton.button == sf::Mouse::Left)
             {
                 sf::Vector2f mousePos = window.mapPixelToCoords(sf::Vector2i(event.mouseButton.x, event.mouseButton.y));
-                selectedNode = GC.handle_mouse_click(mousePos.x, mousePos.y);
-                if (selectedNode != -1)
-                {
-                    GC.highlight_node(selectedNode, sf::TextCircleHighlightMode::WHITE);  // Highlight the selected node
-                }
-            }
+                ssuds::ArrayList<int> selectedNodes = GC.handle_mouse_click(mousePos.x, mousePos.y, true);  // true for end node selection
 
-            if (event.type == sf::Event::KeyPressed && event.key.code == sf::Keyboard::B)
-            {
-                if (selectedNode != -1) // Make sure there is a selected node
+                // Perform BFS if a node is clicked
+                if (selectedNodes.size() == 1) // Assuming single node selection for BFS
                 {
                     ssuds::ArrayList<std::pair<int, int>> bfsTraversal;
-                    GC.bfs(bfsTraversal);  // Perform BFS and store the result
+                    GC.bfs(bfsTraversal);  // Perform BFS and store the result in bfsTraversal
 
-                    std::cout << "BFS Traversal from Node " << selectedNode << ":\n";
-                    for (auto& pair : bfsTraversal)
+                    // Print the nodes and edges visited by BFS
+                    for (auto& nodePair : bfsTraversal)
                     {
-                        std::cout << "Node: " << pair.first << " to Node: " << pair.second << std::endl;
+                        std::cout << "Node: " << nodePair.first;
+                        if (nodePair.second != -1) // Assuming -1 represents a node with no parent
+                        {
+                            std::cout << ", Edge to: " << nodePair.second;
+                        }
+                        std::cout << std::endl;
                     }
-                    GC.clear_highlights();  // Optionally clear highlights after processing
-                    selectedNode = -1;  // Reset selected node
-=======
-=======
->>>>>>> parent of c22a569 (sort of working 2c)
-            // Handle mouse click for node selection
-<<<<<<< HEAD
-            if (event.type == sf::Event::MouseButtonPressed) {
-                if (event.mouseButton.button == sf::Mouse::Left) {
-                    sf::Vector2f mousePos = window.mapPixelToCoords(sf::Vector2i(event.mouseButton.x, event.mouseButton.y));
-                    GC.handle_mouse_click(mousePos.x, mousePos.y);
-<<<<<<< HEAD
->>>>>>> parent of c22a569 (sort of working 2c)
-=======
->>>>>>> parent of c22a569 (sort of working 2c)
                 }
-=======
-            if (event.type == sf::Event::MouseButtonPressed && event.mouseButton.button == sf::Mouse::Left) {
-                sf::Vector2f mousePos = window.mapPixelToCoords(sf::Vector2i(event.mouseButton.x, event.mouseButton.y));
-                GC.handle_mouse_click(mousePos.x, mousePos.y);
-            }
-
-            // Handle keyboard input for triggering BFS
-            if (event.type == sf::Event::KeyPressed && event.key.code == sf::Keyboard::F1) {
-                GC.doBFS();
->>>>>>> parent of 22e3d5a (Revert "completed 2b")
             }
         }
 
         window.clear();
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-        GC.draw(window);
+        GC.draw(window); // Draw the visual graph
         window.display();
     }
 
-=======
-        GC.draw(window); 
-=======
-        GC.draw(window);  // This will draw the graph and highlight nodes according to BFS order
->>>>>>> parent of 22e3d5a (Revert "completed 2b")
-        window.display();
-    }
-=======
-        GC.draw(window); 
-        window.display();
-    }
->>>>>>> parent of c22a569 (sort of working 2c)
    
->>>>>>> parent of c22a569 (sort of working 2c)
     return 0;
 #endif
 }

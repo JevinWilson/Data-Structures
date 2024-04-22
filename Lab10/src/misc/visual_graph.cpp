@@ -1,10 +1,16 @@
 #include <visual_graph.h>
+#include <queue.h>
 
 
 misc::VisualGraph::VisualGraph(const sf::Font& circle_font, const std::string& fname) : mCircleFont(circle_font)
 {
 	load(fname);
 }
+
+
+
+
+
 
 void misc::VisualGraph::draw(sf::RenderWindow& rw)
 {
@@ -54,6 +60,8 @@ void misc::VisualGraph::draw(sf::RenderWindow& rw)
 		++it;
 	}
 }
+
+
 
 void misc::VisualGraph::load(const std::string& fname)
 {
@@ -112,28 +120,58 @@ void misc::VisualGraph::load(const std::string& fname)
 	}
 }
 
-void misc::VisualGraph::handle_mouse_click(float x, float y) {
-	for (auto& pair : mCircleData) {
-		auto& circle = pair.second;
-		if (circle.point_inside(sf::Vector2f(x, y))) {
-			circle.set_highlight(sf::TextCircleHighlightMode::WHITE);
-		}
-		else {
-			circle.set_highlight(sf::TextCircleHighlightMode::NONE);
+ssuds::ArrayList<int> misc::VisualGraph::handle_mouse_click(const float X, const float Y, bool end) {
+	unsigned int node_count;
+
+	// Check if both the start and end node are wanted
+	if (end)
+		node_count = 2;
+	// Only start node is needed
+	else
+		node_count = 1;
+
+	// Iterate through each node to check if the click was on that node
+	for (std::pair<int, sf::TextCircle>& pair : mCircleData) {
+		sf::Vector2f node_position = pair.second.get_position();
+		float radius = pair.second.get_radius();
+		float distance = std::hypot(node_position.x - X, node_position.y - Y);
+
+		// Check if the click is directly on the node
+		if (distance <= radius) {
+			int idx;
+
+			// Check if there are selected nodes
+			if (selectedNode.size() > 0)
+				idx = selectedNode.find(pair.first);
+			else
+				idx = -1;
+
+			// Check if it is already selected
+			if (idx != -1)
+				selectedNode.remove(idx);
+			else {
+				// Select the node if less than 1 nodes are already selected
+				if (selectedNode.size() < node_count)
+					selectedNode.append(pair.first);
+			}
+			break;
 		}
 	}
+
+	return selectedNode;
 }
 
-void misc::VisualGraph::doBFS() {
-	if (selectedNode == -1) {
-		std::cerr << "No node selected for BFS traversal." << std::endl;
-		return;
-	}
+void misc::VisualGraph::bfs(ssuds::ArrayList<std::pair<int, int>>& traverseMap) {
+	if (selectedNode.size() == 0)
+		throw std::out_of_range("Node not found");
 
-	std::vector<int> bfs_result = mInternalGraph.bfs(selectedNode);
-	for (int node_id : bfs_result) {
-		if (mCircleData.find(node_id) != mCircleData.end()) {
-			mCircleData[node_id].set_highlight(sf::TextCircleHighlightMode::WHITE);
-		}
-	}
+	mInternalGraph.breadth(traverseMap, selectedNode[0]);
+}
+
+void misc::VisualGraph::dfs(ssuds::ArrayList<std::pair<int, int>>& traverseMap) {
+	// Check that there is a start node
+	if (selectedNode.size() == 0)
+		throw std::out_of_range("Node not found");
+
+	mInternalGraph.depth(traverseMap, selectedNode[0]);
 }
