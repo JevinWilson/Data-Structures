@@ -113,7 +113,3 @@ void sf::TextCircle::set_highlight(const TextCircleHighlightMode& m)
 		break;
 	}
 }
-
-float sf::TextCircle::get_radius() const {
-	return mCircle.getRadius();
-}

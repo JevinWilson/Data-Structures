@@ -117,7 +117,5 @@ namespace sf
 		/// </summary>
 		/// <param name="m">new mode</param>
 		void set_highlight(const TextCircleHighlightMode& m);
-
-		float get_radius() const;
 	};
 }
