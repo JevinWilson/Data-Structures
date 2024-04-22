@@ -27,7 +27,10 @@ int main()
     misc::VisualGraph GC(circle_font, "../../../media/output.txt");
 
 <<<<<<< HEAD
+<<<<<<< HEAD
     int selectedNode = -1;
+=======
+>>>>>>> parent of c22a569 (sort of working 2c)
 =======
 >>>>>>> parent of c22a569 (sort of working 2c)
 
@@ -41,6 +44,7 @@ int main()
                 (event.type == sf::Event::KeyPressed && event.key.code == sf::Keyboard::Escape))
                 window.close();
 
+<<<<<<< HEAD
 <<<<<<< HEAD
             if (event.type == sf::Event::MouseButtonPressed && event.mouseButton.button == sf::Mouse::Left)
             {
@@ -67,17 +71,23 @@ int main()
                     GC.clear_highlights();  // Optionally clear highlights after processing
                     selectedNode = -1;  // Reset selected node
 =======
+=======
+>>>>>>> parent of c22a569 (sort of working 2c)
             // Handle mouse click for node selection
             if (event.type == sf::Event::MouseButtonPressed) {
                 if (event.mouseButton.button == sf::Mouse::Left) {
                     sf::Vector2f mousePos = window.mapPixelToCoords(sf::Vector2i(event.mouseButton.x, event.mouseButton.y));
                     GC.handle_mouse_click(mousePos.x, mousePos.y);
+<<<<<<< HEAD
+>>>>>>> parent of c22a569 (sort of working 2c)
+=======
 >>>>>>> parent of c22a569 (sort of working 2c)
                 }
             }
         }
 
         window.clear();
+<<<<<<< HEAD
 <<<<<<< HEAD
         GC.draw(window);
         window.display();
@@ -87,6 +97,11 @@ int main()
         GC.draw(window); 
         window.display();
     }
+=======
+        GC.draw(window); 
+        window.display();
+    }
+>>>>>>> parent of c22a569 (sort of working 2c)
    
 >>>>>>> parent of c22a569 (sort of working 2c)
     return 0;

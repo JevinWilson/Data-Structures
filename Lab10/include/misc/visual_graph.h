@@ -59,15 +59,8 @@ namespace misc
 		/// <returns></returns>
 		void load(const std::string& fname);
 
-<<<<<<< HEAD
 		ssuds::ArrayList<int> handle_mouse_click(const float X, const float Y, bool end=false);
 
-		void highlight_node(int nodeIndex, sf::TextCircleHighlightMode outlineColor);
-		void clear_highlights();
-
 		void bfs(ssuds::ArrayList<std::pair<int, int>>& traverseMap);
-=======
-		void handle_mouse_click(float x, float y);
->>>>>>> parent of c22a569 (sort of working 2c)
 	};
 }
