@@ -3,6 +3,7 @@
 #include <sstream>
 #include <queue.h>
 #include <stdexcept>
+#include <array_list.h>
 
 namespace ssuds
 {
@@ -261,48 +262,35 @@ namespace ssuds
 			return os;
 		}
 
-		// Breadth-First Search (BFS) implementation
-		std::vector<N> bfs(const N& start_node) const {
-            if (!contains_node(start_node)) {
-                throw std::out_of_range("Start node not found in the graph.");
-            }
+		void breadth(ssuds::ArrayList<std::pair<N, N>>& traverseMap, N startNode) {
+			if (!contains_node(startNode))
+				throw std::out_of_range("node does not exist");
 
-            std::vector<N> visited_order;
-            Queue<N> queue;
-            UnorderedMap<N, bool> visited;
+			ssuds::Queue<N> q;
+			ssuds::UnorderedMap<N, bool> visited;
+			traverseMap.clear();
 
-            queue.enqueue(start_node);
-            visited[start_node] = true;
+			q.enqueue(startNode);
+			visited[startNode] = true;
+			traverseMap.append(std::make_pair(startNode, N()));
 
-            while (!queue.empty()) {
-                N current = queue.head();
-                queue.dequeue();
-                visited_order.push_back(current);
+			while (!q.empty()) {
+				N current = q.dequeue();
+				typename UnorderedMap<N, UnorderedMap<N, E>>::UnorderedMapIterator it = mData.find(current);
 
-                auto it = mData.find(current);
-                if (it != mData.end()) {
-                    const auto& neighbors = it->second; 
-                    for (const auto& neighbor_pair : neighbors) {
-                        N neighbor = neighbor_pair.first;
-                        if (visited.find(neighbor) == visited.end()) {
-                            visited[neighbor] = true;
-                            queue.enqueue(neighbor);
-                        }
-                    }
-                }
-            }
-            return visited_order;
-        }
+				if (it != mData.end()) {
+					for (std::pair<N, E>& edges : (*it).second) {
+						N neighbor = edges.first;
 
-        std::vector<N> get_neighbors(const N& node) const {
-            std::vector<N> neighbors;
-            auto it = mData.find(node);
-            if (it != mData.end()) {
-                for (const auto& adj : it->second) {
-                    neighbors.push_back(adj.first);
-                }
-            }
-            return neighbors;
-        }
+						if (!visited[neighbor]) {
+							visited[neighbor] = true;
+							q.enqueue(neighbor);
+							traverseMap.append(std::make_pair(neighbor, current));
+						}
+					}
+				}
+			}
+		}
+
 	};
 }

@@ -26,30 +26,50 @@ int main()
 
     misc::VisualGraph GC(circle_font, "../../../media/output.txt");
 
+    ssuds::ArrayList<int> selectedNodes;
 
-
-     while (window.isOpen())
+    while (window.isOpen())
     {
         sf::Event event;
         while (window.pollEvent(event))
         {
             if (event.type == sf::Event::Closed || 
                 (event.type == sf::Event::KeyPressed && event.key.code == sf::Keyboard::Escape))
+            {
                 window.close();
+            }
 
-            // Handle mouse click for node selection
-            if (event.type == sf::Event::MouseButtonPressed) {
-                if (event.mouseButton.button == sf::Mouse::Left) {
-                    sf::Vector2f mousePos = window.mapPixelToCoords(sf::Vector2i(event.mouseButton.x, event.mouseButton.y));
-                    GC.handle_mouse_click(mousePos.x, mousePos.y);
+            // Handle mouse click for node selection and perform BFS
+            if (event.type == sf::Event::MouseButtonPressed && event.mouseButton.button == sf::Mouse::Left)
+            {
+                sf::Vector2f mousePos = window.mapPixelToCoords(sf::Vector2i(event.mouseButton.x, event.mouseButton.y));
+                ssuds::ArrayList<int> selectedNodes = GC.handle_mouse_click(mousePos.x, mousePos.y, true);  // true for end node selection
+
+                // Perform BFS if a node is clicked
+                if (selectedNodes.size() == 1) // Assuming single node selection for BFS
+                {
+                    ssuds::ArrayList<std::pair<int, int>> bfsTraversal;
+                    GC.bfs(bfsTraversal);  // Perform BFS and store the result in bfsTraversal
+
+                    // Print the nodes and edges visited by BFS
+                    for (auto& nodePair : bfsTraversal)
+                    {
+                        std::cout << "Node: " << nodePair.first;
+                        if (nodePair.second != -1) // Assuming -1 represents a node with no parent
+                        {
+                            std::cout << ", Edge to: " << nodePair.second;
+                        }
+                        std::cout << std::endl;
+                    }
                 }
             }
         }
 
         window.clear();
-        GC.draw(window); 
+        GC.draw(window); // Draw the visual graph
         window.display();
     }
+
    
     return 0;
 #endif
