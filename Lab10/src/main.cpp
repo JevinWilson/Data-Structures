@@ -26,7 +26,7 @@ int main()
 
     misc::VisualGraph GC(circle_font, "../../../media/output.txt");
 
-    ssuds::ArrayList<int> selectedNodes;
+    int selectedNode = -1;
 
     while (window.isOpen())
     {
@@ -39,38 +39,39 @@ int main()
                 window.close();
             }
 
-            // Handle mouse click for node selection and perform BFS
             if (event.type == sf::Event::MouseButtonPressed && event.mouseButton.button == sf::Mouse::Left)
             {
                 sf::Vector2f mousePos = window.mapPixelToCoords(sf::Vector2i(event.mouseButton.x, event.mouseButton.y));
-                ssuds::ArrayList<int> selectedNodes = GC.handle_mouse_click(mousePos.x, mousePos.y, true);  // true for end node selection
+                selectedNode = GC.handle_mouse_click(mousePos.x, mousePos.y);
+                if (selectedNode != -1)
+                {
+                    GC.highlight_node(selectedNode, sf::TextCircleHighlightMode::WHITE);  // Highlight the selected node
+                }
+            }
 
-                // Perform BFS if a node is clicked
-                if (selectedNodes.size() == 1) // Assuming single node selection for BFS
+            if (event.type == sf::Event::KeyPressed && event.key.code == sf::Keyboard::B)
+            {
+                if (selectedNode != -1) // Make sure there is a selected node
                 {
                     ssuds::ArrayList<std::pair<int, int>> bfsTraversal;
-                    GC.bfs(bfsTraversal);  // Perform BFS and store the result in bfsTraversal
+                    GC.bfs(bfsTraversal);  // Perform BFS and store the result
 
-                    // Print the nodes and edges visited by BFS
-                    for (auto& nodePair : bfsTraversal)
+                    std::cout << "BFS Traversal from Node " << selectedNode << ":\n";
+                    for (auto& pair : bfsTraversal)
                     {
-                        std::cout << "Node: " << nodePair.first;
-                        if (nodePair.second != -1) // Assuming -1 represents a node with no parent
-                        {
-                            std::cout << ", Edge to: " << nodePair.second;
-                        }
-                        std::cout << std::endl;
+                        std::cout << "Node: " << pair.first << " to Node: " << pair.second << std::endl;
                     }
+                    GC.clear_highlights();  // Optionally clear highlights after processing
+                    selectedNode = -1;  // Reset selected node
                 }
             }
         }
 
         window.clear();
-        GC.draw(window); // Draw the visual graph
+        GC.draw(window);
         window.display();
     }
 
-   
     return 0;
 #endif
 }

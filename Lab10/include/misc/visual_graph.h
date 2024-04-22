@@ -61,6 +61,9 @@ namespace misc
 
 		ssuds::ArrayList<int> handle_mouse_click(const float X, const float Y, bool end=false);
 
+		void highlight_node(int nodeIndex, sf::TextCircleHighlightMode outlineColor);
+		void clear_highlights();
+
 		void bfs(ssuds::ArrayList<std::pair<int, int>>& traverseMap);
 	};
 }

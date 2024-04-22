@@ -1,2 +1,7 @@
 ﻿  main.cpp
-  ssuds.vcxproj -> C:\Users\jaw06\Desktop\DS Assignment\Lab10\bin\vs2022\Debug\ssuds_d.exe
+C:\Users\jaw06\Desktop\DS Assignment\Lab10\src\main.cpp(45,53): error C2440: '=': cannot convert from 'ssuds::ArrayList<int>' to 'int'
+  C:\Users\jaw06\Desktop\DS Assignment\Lab10\src\main.cpp(45,53):
+  No user-defined-conversion operator available that can perform this conversion, or the operator cannot be called
+  
+  visual_graph.cpp
+  Generating Code...
