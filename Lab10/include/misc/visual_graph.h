@@ -60,7 +60,5 @@ namespace misc
 		void load(const std::string& fname);
 
 		void handle_mouse_click(float x, float y);
-
-		void doBFS();
 	};
 }
