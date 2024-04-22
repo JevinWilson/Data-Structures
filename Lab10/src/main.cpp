@@ -36,10 +36,18 @@ int main()
             if (event.type == sf::Event::Closed || 
                 (event.type == sf::Event::KeyPressed && event.key.code == sf::Keyboard::Escape))
                 window.close();
+
+            // Handle mouse click for node selection
+            if (event.type == sf::Event::MouseButtonPressed) {
+                if (event.mouseButton.button == sf::Mouse::Left) {
+                    sf::Vector2f mousePos = window.mapPixelToCoords(sf::Vector2i(event.mouseButton.x, event.mouseButton.y));
+                    GC.handle_mouse_click(mousePos.x, mousePos.y);
+                }
+            }
         }
 
         window.clear();
-        GC.draw(window);
+        GC.draw(window); 
         window.display();
     }
    

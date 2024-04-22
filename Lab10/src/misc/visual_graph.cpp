@@ -6,11 +6,6 @@ misc::VisualGraph::VisualGraph(const sf::Font& circle_font, const std::string& f
 	load(fname);
 }
 
-
-
-
-
-
 void misc::VisualGraph::draw(sf::RenderWindow& rw)
 {
 	// Draw edges
@@ -59,8 +54,6 @@ void misc::VisualGraph::draw(sf::RenderWindow& rw)
 		++it;
 	}
 }
-
-
 
 void misc::VisualGraph::load(const std::string& fname)
 {
@@ -115,6 +108,18 @@ void misc::VisualGraph::load(const std::string& fname)
 				if (mInternalGraph.contains_node(id_start) && mInternalGraph.contains_node(id_end))
 					mInternalGraph.set_edge(id_start, id_end, d);
 			}
+		}
+	}
+}
+
+void misc::VisualGraph::handle_mouse_click(float x, float y) {
+	for (auto& pair : mCircleData) {
+		auto& circle = pair.second;
+		if (circle.point_inside(sf::Vector2f(x, y))) {
+			circle.set_highlight(sf::TextCircleHighlightMode::WHITE);
+		}
+		else {
+			circle.set_highlight(sf::TextCircleHighlightMode::NONE);
 		}
 	}
 }

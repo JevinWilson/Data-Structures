@@ -55,5 +55,7 @@ namespace misc
 		/// <param name="fname">filename (and path info) to load</param>
 		/// <returns></returns>
 		void load(const std::string& fname);
+
+		void handle_mouse_click(float x, float y);
 	};
 }
