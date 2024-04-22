@@ -59,8 +59,8 @@ namespace misc
 		/// <returns></returns>
 		void load(const std::string& fname);
 
-		ssuds::ArrayList<int> handle_mouse_click(const float X, const float Y, bool end=false);
+		void handle_mouse_click(float x, float y);
 
-		void bfs(ssuds::ArrayList<std::pair<int, int>>& traverseMap);
+		void doBFS();
 	};
 }

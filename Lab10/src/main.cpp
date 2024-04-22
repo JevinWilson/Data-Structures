@@ -74,6 +74,7 @@ int main()
 =======
 >>>>>>> parent of c22a569 (sort of working 2c)
             // Handle mouse click for node selection
+<<<<<<< HEAD
             if (event.type == sf::Event::MouseButtonPressed) {
                 if (event.mouseButton.button == sf::Mouse::Left) {
                     sf::Vector2f mousePos = window.mapPixelToCoords(sf::Vector2i(event.mouseButton.x, event.mouseButton.y));
@@ -83,10 +84,21 @@ int main()
 =======
 >>>>>>> parent of c22a569 (sort of working 2c)
                 }
+=======
+            if (event.type == sf::Event::MouseButtonPressed && event.mouseButton.button == sf::Mouse::Left) {
+                sf::Vector2f mousePos = window.mapPixelToCoords(sf::Vector2i(event.mouseButton.x, event.mouseButton.y));
+                GC.handle_mouse_click(mousePos.x, mousePos.y);
+            }
+
+            // Handle keyboard input for triggering BFS
+            if (event.type == sf::Event::KeyPressed && event.key.code == sf::Keyboard::F1) {
+                GC.doBFS();
+>>>>>>> parent of 22e3d5a (Revert "completed 2b")
             }
         }
 
         window.clear();
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
         GC.draw(window);
@@ -95,6 +107,9 @@ int main()
 
 =======
         GC.draw(window); 
+=======
+        GC.draw(window);  // This will draw the graph and highlight nodes according to BFS order
+>>>>>>> parent of 22e3d5a (Revert "completed 2b")
         window.display();
     }
 =======
