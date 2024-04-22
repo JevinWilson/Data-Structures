@@ -39,34 +39,54 @@ int main()
                 window.close();
             }
 
-            // Handle mouse click for node selection and perform BFS
+           
             if (event.type == sf::Event::MouseButtonPressed && event.mouseButton.button == sf::Mouse::Left)
             {
                 sf::Vector2f mousePos = window.mapPixelToCoords(sf::Vector2i(event.mouseButton.x, event.mouseButton.y));
-                ssuds::ArrayList<int> selectedNodes = GC.handle_mouse_click(mousePos.x, mousePos.y, true);  // true for end node selection
+                ssuds::ArrayList<int> selectedNodes = GC.handle_mouse_click(mousePos.x, mousePos.y, true);  
 
-                // Perform BFS if a node is clicked
-                if (selectedNodes.size() == 1) // Assuming single node selection for BFS
+                //bfs traversal
+                /*if (selectedNodes.size() == 1) 
                 {
                     ssuds::ArrayList<std::pair<int, int>> bfsTraversal;
-                    GC.bfs(bfsTraversal);  // Perform BFS and store the result in bfsTraversal
+                    GC.bfs(bfsTraversal);  
 
-                    // Print the nodes and edges visited by BFS
+                    std::cout << "BFS Traversal:" << std::endl;
                     for (auto& nodePair : bfsTraversal)
                     {
                         std::cout << "Node: " << nodePair.first;
-                        if (nodePair.second != -1) // Assuming -1 represents a node with no parent
+                        if (nodePair.second != -1) 
                         {
                             std::cout << ", Edge to: " << nodePair.second;
                         }
                         std::cout << std::endl;
                     }
+                }*/
+
+                //dfs traversal
+                if (selectedNodes.size() == 1) // Assuming we proceed only if exactly one node is selected
+                {
+                    ssuds::ArrayList<std::pair<int, int>> dfsTraversal;
+                    GC.dfs(dfsTraversal); // Perform DFS and store the result in dfsTraversal
+
+                    std::cout << "DFS Traversal: ";
+                    for (auto& nodePair : dfsTraversal)
+                    {
+                        std::cout << "Node: " << nodePair.first;
+                        if (nodePair.second != -1) // Assuming -1 represents a node with no parent
+                        {
+                            std::cout << ", Connected from: " << nodePair.second;
+                        }
+                        std::cout << std::endl;
+                    }
                 }
+
+
             }
         }
 
         window.clear();
-        GC.draw(window); // Draw the visual graph
+        GC.draw(window);
         window.display();
     }
 

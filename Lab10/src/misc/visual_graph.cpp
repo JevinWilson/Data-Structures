@@ -123,34 +123,27 @@ void misc::VisualGraph::load(const std::string& fname)
 ssuds::ArrayList<int> misc::VisualGraph::handle_mouse_click(const float X, const float Y, bool end) {
 	unsigned int node_count;
 
-	// Check if both the start and end node are wanted
 	if (end)
 		node_count = 2;
-	// Only start node is needed
 	else
 		node_count = 1;
 
-	// Iterate through each node to check if the click was on that node
 	for (std::pair<int, sf::TextCircle>& pair : mCircleData) {
 		sf::Vector2f node_position = pair.second.get_position();
 		float radius = pair.second.get_radius();
 		float distance = std::hypot(node_position.x - X, node_position.y - Y);
 
-		// Check if the click is directly on the node
 		if (distance <= radius) {
-			int idx;
+			int i;
 
-			// Check if there are selected nodes
 			if (selectedNode.size() > 0)
-				idx = selectedNode.find(pair.first);
+				i = selectedNode.find(pair.first);
 			else
-				idx = -1;
+				i = -1;
 
-			// Check if it is already selected
-			if (idx != -1)
-				selectedNode.remove(idx);
+			if (i != -1)
+				selectedNode.remove(i);
 			else {
-				// Select the node if less than 1 nodes are already selected
 				if (selectedNode.size() < node_count)
 					selectedNode.append(pair.first);
 			}
@@ -169,9 +162,9 @@ void misc::VisualGraph::bfs(ssuds::ArrayList<std::pair<int, int>>& traverseMap) 
 }
 
 void misc::VisualGraph::dfs(ssuds::ArrayList<std::pair<int, int>>& traverseMap) {
-	// Check that there is a start node
 	if (selectedNode.size() == 0)
 		throw std::out_of_range("Node not found");
 
 	mInternalGraph.depth(traverseMap, selectedNode[0]);
 }
+

@@ -302,7 +302,7 @@ namespace ssuds
 			ssuds::UnorderedMap<N, bool> visited;
 			traverseMap.clear();
 
-			s.ush(startNode);
+			s.push(startNode);
 			visited[startNode] = true;
 			traverseMap.append(std::make_pair(startNode, N()));
 
