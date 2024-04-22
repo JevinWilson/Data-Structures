@@ -1,6 +1,8 @@
 #pragma once
 #include <unordered_map.h>
 #include <sstream>
+#include <queue.h>
+#include <stdexcept>
 
 namespace ssuds
 {
@@ -258,5 +260,49 @@ namespace ssuds
 
 			return os;
 		}
+
+		// Breadth-First Search (BFS) implementation
+		std::vector<N> bfs(const N& start_node) const {
+            if (!contains_node(start_node)) {
+                throw std::out_of_range("Start node not found in the graph.");
+            }
+
+            std::vector<N> visited_order;
+            Queue<N> queue;
+            UnorderedMap<N, bool> visited;
+
+            queue.enqueue(start_node);
+            visited[start_node] = true;
+
+            while (!queue.empty()) {
+                N current = queue.head();
+                queue.dequeue();
+                visited_order.push_back(current);
+
+                auto it = mData.find(current);
+                if (it != mData.end()) {
+                    const auto& neighbors = it->second; 
+                    for (const auto& neighbor_pair : neighbors) {
+                        N neighbor = neighbor_pair.first;
+                        if (visited.find(neighbor) == visited.end()) {
+                            visited[neighbor] = true;
+                            queue.enqueue(neighbor);
+                        }
+                    }
+                }
+            }
+            return visited_order;
+        }
+
+        std::vector<N> get_neighbors(const N& node) const {
+            std::vector<N> neighbors;
+            auto it = mData.find(node);
+            if (it != mData.end()) {
+                for (const auto& adj : it->second) {
+                    neighbors.push_back(adj.first);
+                }
+            }
+            return neighbors;
+        }
 	};
 }

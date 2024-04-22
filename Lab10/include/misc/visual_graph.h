@@ -34,6 +34,9 @@ namespace misc
 		/// </summary>
 		ssuds::UnorderedMap<int, sf::TextCircle> mCircleData;
 
+		/// for bfs
+		int selectedNode = -1;
+
 
 	public:
 		/// <summary>
@@ -57,5 +60,7 @@ namespace misc
 		void load(const std::string& fname);
 
 		void handle_mouse_click(float x, float y);
+
+		void doBFS();
 	};
 }

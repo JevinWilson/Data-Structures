@@ -123,3 +123,17 @@ void misc::VisualGraph::handle_mouse_click(float x, float y) {
 		}
 	}
 }
+
+void misc::VisualGraph::doBFS() {
+	if (selectedNode == -1) {
+		std::cerr << "No node selected for BFS traversal." << std::endl;
+		return;
+	}
+
+	std::vector<int> bfs_result = mInternalGraph.bfs(selectedNode);
+	for (int node_id : bfs_result) {
+		if (mCircleData.find(node_id) != mCircleData.end()) {
+			mCircleData[node_id].set_highlight(sf::TextCircleHighlightMode::WHITE);
+		}
+	}
+}

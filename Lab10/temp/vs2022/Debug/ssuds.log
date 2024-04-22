@@ -1,2 +1,149 @@
-﻿  visual_graph.cpp
-  ssuds.vcxproj -> C:\Users\jaw06\Desktop\DS Assignment\Lab10\bin\vs2022\Debug\ssuds_d.exe
+﻿  main.cpp
+  visual_graph.cpp
+C:\Users\jaw06\Desktop\DS Assignment\Lab10\include\sf\graph.h(284,45): error C2819: type 'ssuds::UnorderedMap<N,ssuds::UnorderedMap<N,E>>::UnorderedMapIterator' does not have an overloaded member 'operator ->'
+C:\Users\jaw06\Desktop\DS Assignment\Lab10\include\sf\graph.h(284,45): error C2819:         with
+C:\Users\jaw06\Desktop\DS Assignment\Lab10\include\sf\graph.h(284,45): error C2819:         [
+C:\Users\jaw06\Desktop\DS Assignment\Lab10\include\sf\graph.h(284,45): error C2819:             N=int,
+C:\Users\jaw06\Desktop\DS Assignment\Lab10\include\sf\graph.h(284,45): error C2819:             E=float
+C:\Users\jaw06\Desktop\DS Assignment\Lab10\include\sf\graph.h(284,45): error C2819:         ]
+  (compiling source file '../../src/misc/visual_graph.cpp')
+  C:\Users\jaw06\Desktop\DS Assignment\Lab10\include\ssuds\unordered_map.h(18,1):
+  see declaration of 'ssuds::UnorderedMap<N,ssuds::UnorderedMap<N,E>>::UnorderedMapIterator'
+          with
+          [
+              N=int,
+              E=float
+          ]
+  C:\Users\jaw06\Desktop\DS Assignment\Lab10\include\sf\graph.h(284,45):
+  did you intend to use '.' instead?
+  C:\Users\jaw06\Desktop\DS Assignment\Lab10\include\sf\graph.h(284,45):
+  the template instantiation context (the oldest one first) is
+  	C:\Users\jaw06\Desktop\DS Assignment\Lab10\include\misc\visual_graph.h(29,28):
+  	see reference to class template instantiation 'ssuds::Graph<int,float>' being compiled
+  	C:\Users\jaw06\Desktop\DS Assignment\Lab10\include\sf\graph.h(265,18):
+  	while compiling class template member function 'std::vector<N,std::allocator<N>> ssuds::Graph<N,float>::bfs(const N &) const'
+          with
+          [
+              N=int
+          ]
+  		C:\Users\jaw06\Desktop\DS Assignment\Lab10\src\misc\visual_graph.cpp(133,30):
+  		see the first reference to 'ssuds::Graph<int,float>::bfs' in 'misc::VisualGraph::doBFS'
+  
+C:\Users\jaw06\Desktop\DS Assignment\Lab10\include\sf\graph.h(284,49): error C2039: 'second': is not a member of 'ssuds::UnorderedMap<N,ssuds::UnorderedMap<N,E>>::UnorderedMapIterator'
+C:\Users\jaw06\Desktop\DS Assignment\Lab10\include\sf\graph.h(284,49): error C2039:         with
+C:\Users\jaw06\Desktop\DS Assignment\Lab10\include\sf\graph.h(284,49): error C2039:         [
+C:\Users\jaw06\Desktop\DS Assignment\Lab10\include\sf\graph.h(284,49): error C2039:             N=int,
+C:\Users\jaw06\Desktop\DS Assignment\Lab10\include\sf\graph.h(284,49): error C2039:             E=float
+C:\Users\jaw06\Desktop\DS Assignment\Lab10\include\sf\graph.h(284,49): error C2039:         ]
+  (compiling source file '../../src/misc/visual_graph.cpp')
+  C:\Users\jaw06\Desktop\DS Assignment\Lab10\include\ssuds\unordered_map.h(18,1):
+  see declaration of 'ssuds::UnorderedMap<N,ssuds::UnorderedMap<N,E>>::UnorderedMapIterator'
+          with
+          [
+              N=int,
+              E=float
+          ]
+  
+C:\Users\jaw06\Desktop\DS Assignment\Lab10\include\sf\graph.h(284,43): error C2530: 'neighbors': references must be initialized
+  (compiling source file '../../src/misc/visual_graph.cpp')
+  
+C:\Users\jaw06\Desktop\DS Assignment\Lab10\include\sf\graph.h(285,54): error C3536: 'neighbors': cannot be used before it is initialized
+  (compiling source file '../../src/misc/visual_graph.cpp')
+  
+C:\Users\jaw06\Desktop\DS Assignment\Lab10\include\sf\graph.h(285,54): error C2672: 'begin': no matching overloaded function found
+  (compiling source file '../../src/misc/visual_graph.cpp')
+  C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.38.33130\include\xutility(1824,27):
+  could be '_Ty *std::begin(_Ty (&)[_Size]) noexcept'
+  	C:\Users\jaw06\Desktop\DS Assignment\Lab10\include\sf\graph.h(285,54):
+  	'_Ty *std::begin(_Ty (&)[_Size]) noexcept': could not deduce template argument for '_Ty (&)[_Size]' from 'int'
+  C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.38.33130\include\xutility(1806,30):
+  or       'unknown-type std::begin(const _Container &) noexcept(<expr>)'
+  	C:\Users\jaw06\Desktop\DS Assignment\Lab10\include\sf\graph.h(285,54):
+  	Failed to specialize function template 'unknown-type std::begin(const _Container &) noexcept(<expr>)'
+  		C:\Users\jaw06\Desktop\DS Assignment\Lab10\include\sf\graph.h(285,54):
+  		With the following template arguments:
+  			C:\Users\jaw06\Desktop\DS Assignment\Lab10\include\sf\graph.h(285,54):
+  			'_Container=int'
+  		C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.38.33130\include\xutility(1807,23):
+  		left of '.begin' must have class/struct/union
+  			C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.38.33130\include\xutility(1807,23):
+  			type is 'const _Container'
+          with
+          [
+              _Container=int
+          ]
+  C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.38.33130\include\xutility(1800,30):
+  or       'unknown-type std::begin(_Container &) noexcept(<expr>)'
+  	C:\Users\jaw06\Desktop\DS Assignment\Lab10\include\sf\graph.h(285,54):
+  	Failed to specialize function template 'unknown-type std::begin(_Container &) noexcept(<expr>)'
+  		C:\Users\jaw06\Desktop\DS Assignment\Lab10\include\sf\graph.h(285,54):
+  		With the following template arguments:
+  			C:\Users\jaw06\Desktop\DS Assignment\Lab10\include\sf\graph.h(285,54):
+  			'_Container=int'
+  		C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.38.33130\include\xutility(1801,23):
+  		left of '.begin' must have class/struct/union
+  			C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.38.33130\include\xutility(1801,23):
+  			type is '_Container'
+          with
+          [
+              _Container=int
+          ]
+  C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.38.33130\include\initializer_list(54,35):
+  or       'const _Elem *std::begin(std::initializer_list<_Elem>) noexcept'
+  	C:\Users\jaw06\Desktop\DS Assignment\Lab10\include\sf\graph.h(285,54):
+  	'const _Elem *std::begin(std::initializer_list<_Elem>) noexcept': could not deduce template argument for 'std::initializer_list<_Elem>' from 'int'
+  
+C:\Users\jaw06\Desktop\DS Assignment\Lab10\include\sf\graph.h(285,54): error C2672: 'end': no matching overloaded function found
+  (compiling source file '../../src/misc/visual_graph.cpp')
+  C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.38.33130\include\xutility(1829,27):
+  could be '_Ty *std::end(_Ty (&)[_Size]) noexcept'
+  	C:\Users\jaw06\Desktop\DS Assignment\Lab10\include\sf\graph.h(285,54):
+  	'_Ty *std::end(_Ty (&)[_Size]) noexcept': could not deduce template argument for '_Ty (&)[_Size]' from 'int'
+  C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.38.33130\include\xutility(1818,30):
+  or       'unknown-type std::end(const _Container &) noexcept(<expr>)'
+  	C:\Users\jaw06\Desktop\DS Assignment\Lab10\include\sf\graph.h(285,54):
+  	Failed to specialize function template 'unknown-type std::end(const _Container &) noexcept(<expr>)'
+  		C:\Users\jaw06\Desktop\DS Assignment\Lab10\include\sf\graph.h(285,54):
+  		With the following template arguments:
+  			C:\Users\jaw06\Desktop\DS Assignment\Lab10\include\sf\graph.h(285,54):
+  			'_Container=int'
+  		C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.38.33130\include\xutility(1819,23):
+  		left of '.end' must have class/struct/union
+  			C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.38.33130\include\xutility(1819,23):
+  			type is 'const _Container'
+          with
+          [
+              _Container=int
+          ]
+  C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.38.33130\include\xutility(1812,30):
+  or       'unknown-type std::end(_Container &) noexcept(<expr>)'
+  	C:\Users\jaw06\Desktop\DS Assignment\Lab10\include\sf\graph.h(285,54):
+  	Failed to specialize function template 'unknown-type std::end(_Container &) noexcept(<expr>)'
+  		C:\Users\jaw06\Desktop\DS Assignment\Lab10\include\sf\graph.h(285,54):
+  		With the following template arguments:
+  			C:\Users\jaw06\Desktop\DS Assignment\Lab10\include\sf\graph.h(285,54):
+  			'_Container=int'
+  		C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.38.33130\include\xutility(1813,23):
+  		left of '.end' must have class/struct/union
+  			C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.38.33130\include\xutility(1813,23):
+  			type is '_Container'
+          with
+          [
+              _Container=int
+          ]
+  C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.38.33130\include\initializer_list(59,35):
+  or       'const _Elem *std::end(std::initializer_list<_Elem>) noexcept'
+  	C:\Users\jaw06\Desktop\DS Assignment\Lab10\include\sf\graph.h(285,54):
+  	'const _Elem *std::end(std::initializer_list<_Elem>) noexcept': could not deduce template argument for 'std::initializer_list<_Elem>' from 'int'
+  
+C:\Users\jaw06\Desktop\DS Assignment\Lab10\include\sf\graph.h(285,54): error C3536: '<begin>$L0': cannot be used before it is initialized
+  (compiling source file '../../src/misc/visual_graph.cpp')
+  
+C:\Users\jaw06\Desktop\DS Assignment\Lab10\include\sf\graph.h(285,54): error C3536: '<end>$L0': cannot be used before it is initialized
+  (compiling source file '../../src/misc/visual_graph.cpp')
+  
+C:\Users\jaw06\Desktop\DS Assignment\Lab10\include\sf\graph.h(285,63): error C2100: illegal indirection
+  (compiling source file '../../src/misc/visual_graph.cpp')
+  
+  graph_tests.cpp
+  Generating Code...
